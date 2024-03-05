@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Link;
 use App\Livewire\RegistrationWR;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,6 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::get('/registration', RegistrationWR::class)->name('registration');
+Route::get('/link', Link::class)->name('link');
 
 require __DIR__ . '/auth.php';
