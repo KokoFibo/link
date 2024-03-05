@@ -18,7 +18,8 @@
                 </h5>
             </div>
             <div class="barcode">
-                <img src="/public/barcode.png" alt="" style="width: 50px" class="rounded-2xl border-2 p-1" />
+                <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 50px"
+                    class="rounded-2xl border-2 p-1" />
             </div>
         </div>
 
