@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+REV:2024-03-06T13:10:35Z
+N;CHARSET=utf-8:Calista Mercado;;;;
+FN;CHARSET=utf-8:Calista Mercado
+ORG;CHARSET=utf-8:FpOne
+TITLE;CHARSET=utf-8:Financial Planner
+ROLE;CHARSET=utf-8:Data Protection Officer
+EMAIL;INTERNET:waju@mailinator.com
+TEL;PREF;WORK:0878123456
+ADR;WORK;POSTAL;CHARSET=utf-8:1;2;Jl.Fpone no 16;Jakarta;3;11320;Indonesia
+ 
+LABEL;CHARSET=utf-8:street, worktown, workpostcode Belgium
+URL:http://www.accel365.id
+END:VCARD

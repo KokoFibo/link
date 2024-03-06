@@ -39,30 +39,30 @@ class UserController extends Controller
             $vcard->addAddress('1', '2', 'Jl.Fpone no 16', 'Jakarta', '3', '11320', 'Indonesia');
             $vcard->addLabel('street, worktown, workpostcode Belgium');
             $vcard->addURL('http://www.accel365.id');
-            if ($data->photo_path) {
-                $path = "storage/photos/ $data->photo_name";
-                $path = preg_replace('/\s+/', '', $path);
+            // if ($data->photo_path) {
+            //     $path = "storage/photos/ $data->photo_name";
+            //     $path = preg_replace('/\s+/', '', $path);
 
-                $vcard->addPhoto(public_path($path));
-            } else {
-                $vcard->addPhoto(public_path('/images/pp.png'));
-            }
+            //     $vcard->addPhoto(public_path($path));
+            // } else {
+            //     $vcard->addPhoto(public_path('/images/pp.png'));
+            // }
 
             // return vcard as a string
             //return $vcard->getOutput();
 
             // return vcard as a download
-            // return $vcard->download();
-            $vcard->setSavePath(storage_path('vcard/'));
-            $vcard->save();
+            return $vcard->download();
 
-            $filename = $vcard->getFileName();
 
-            return response()->download(storage_path("vcard/{$filename}"));
+            // $vcard->setSavePath(storage_path('vcard/'));
+            // $vcard->save();
+            // $filename = $vcard->getFileName();
+            // return response()->download(storage_path("vcard/{$filename}"));
 
             // save vcard on disk
             //$vcard->setSavePath('/path/to/directory');
-            //$vcard->save();
+            // $vcard->save();
         } else {
             return back();
         }
