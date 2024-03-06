@@ -82,9 +82,10 @@ class RegistrationWR extends Component
         $this->validate();
         if ($this->photo) {
             $filename = md5($this->photo . microtime()) . '.' . $this->photo->extension();
-            $this->photo->storeAs('/public/photos', $filename);
+            $path = $this->photo->storeAs('photos', $filename, 'public');
         } else {
             $filename = $this->photo;
+            $path = $this->photo;
         }
 
         $data = new User;
@@ -99,11 +100,15 @@ class RegistrationWR extends Component
         $data->facebook = $this->facebook;
         $data->tiktok = $this->tiktok;
         $data->youtube = $this->youtube;
-        // $data->photo = $filename;
+        $data->photo_name = $filename;
+        $data->photo_path = $path;
+
         // $this->photo->store(path: 'photos');
-        $data->photo = $filename;
+
+        // $data->photo = $filename;
         $data->save();
         $this->is_add = false;
+        $this->reset();
     }
 
     public function delete($id)

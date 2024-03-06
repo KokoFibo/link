@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('tiktok')->nullable();
             $table->string('youtube')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('photo_name')->nullable();
+            $table->string('photo_path')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
