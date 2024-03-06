@@ -82,7 +82,7 @@ class RegistrationWR extends Component
         $this->validate();
         if ($this->photo) {
             $filename = md5($this->photo . microtime()) . '.' . $this->photo->extension();
-            $this->photo->storeAs('photos', $filename);
+            $this->photo->storeAs('/public/photos', $filename);
         } else {
             $filename = $this->photo;
         }
