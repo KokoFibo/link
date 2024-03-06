@@ -2,6 +2,7 @@
 
 use App\Livewire\Link;
 use App\Livewire\RegistrationWR;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,13 @@ Route::view('profile', 'profile')
 
 Route::get('/registration', RegistrationWR::class)->name('registration');
 Route::get('/link', Link::class)->name('link');
+
+Route::get('/symlinkaja', function () {
+    File::link(
+        storage_path('app/public'),
+        public_path('storage')
+    );
+    echo 'Symlink done';
+});
 
 require __DIR__ . '/auth.php';
