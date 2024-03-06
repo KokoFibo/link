@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('photo_path')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('code')->nullable();
+            $table->string('link')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

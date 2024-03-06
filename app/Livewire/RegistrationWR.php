@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
@@ -12,11 +13,12 @@ use Illuminate\Support\Facades\Session;
 
 class RegistrationWR extends Component
 {
+    use WithPagination;
+    use WithFileUploads;
     public $is_add, $is_edit, $id;
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
     public $instagram, $facebook, $tiktok, $youtube, $photo;
-    use WithPagination;
-    use WithFileUploads;
+
 
 
 
@@ -43,9 +45,10 @@ class RegistrationWR extends Component
         $this->validate();
         if ($this->photo) {
             $filename = md5($this->photo . microtime()) . '.' . $this->photo->extension();
-            $this->photo->storeAs('photos', $filename);
+            $path = $this->photo->storeAs('photos', $filename, 'public');
         } else {
             $filename = $this->photo;
+            $path = $this->photo;
         }
         $data = User::find($this->id);
         $data->name = $this->name;
@@ -58,7 +61,8 @@ class RegistrationWR extends Component
         $data->facebook = $this->facebook;
         $data->tiktok = $this->tiktok;
         $data->youtube = $this->youtube;
-        $data->photo = $filename;
+        $data->photo_name = $filename;
+        $data->photo_path = $path;
         $data->save();
         $this->is_edit = false;
     }
@@ -67,7 +71,7 @@ class RegistrationWR extends Component
         'name' => 'required',
         'title' => 'required',
         'email' => 'required',
-        'kode_agent' => 'nullable',
+        'kode_agent' => 'required|integer',
         'mobile' => 'nullable',
         'whatsapp' => 'nullable',
         'instagram' => 'nullable',
@@ -102,6 +106,8 @@ class RegistrationWR extends Component
         $data->youtube = $this->youtube;
         $data->photo_name = $filename;
         $data->photo_path = $path;
+        $data->code = Str::toBase64($this->kode_agent);
+        $data->link = 'https://link.accel365.id/card/' . $data->code;
 
         // $this->photo->store(path: 'photos');
 
@@ -119,6 +125,7 @@ class RegistrationWR extends Component
 
     public function mount()
     {
+
         $this->is_add = 0;
         $this->is_edit = 0;
         $this->clear_form();

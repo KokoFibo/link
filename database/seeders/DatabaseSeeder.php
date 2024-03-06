@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Business Development',
             'email' => 'kokonacci@gmail.com',
             'email_verified_at' => now(),
+            'code' => Str::toBase64(fake()->randomNumber(7, true)),
             'password' => Hash::make('Anton888'),
         ]);
 
