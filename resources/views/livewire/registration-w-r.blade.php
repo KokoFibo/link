@@ -270,7 +270,7 @@
                                         {{ $user->code }}
                                     </td>
                                     <td class="px-4 py-2">
-                                        <a href="{{ $user->link }}">{{ $user->link }}</a>
+                                        <a href="{{ $user->link }}" target="_blank">{{ $user->link }}</a>
                                     </td>
                                     <td class="px-4 py-2">
                                         @if ($user->photo_path)

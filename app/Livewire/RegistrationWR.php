@@ -63,6 +63,8 @@ class RegistrationWR extends Component
         $data->youtube = $this->youtube;
         $data->photo_name = $filename;
         $data->photo_path = $path;
+        $data->code = Str::toBase64($this->kode_agent);
+        $data->link = 'https://link.accel365.id/Card/' . $data->code;
         $data->save();
         $this->is_edit = false;
     }
