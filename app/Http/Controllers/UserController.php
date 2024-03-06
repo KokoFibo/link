@@ -40,7 +40,7 @@ class UserController extends Controller
             $vcard->addLabel('street, worktown, workpostcode Belgium');
             $vcard->addURL('http://www.accel365.id');
             if ($data->photo_path) {
-                $path = "storage\photos\ $data->photo_name";
+                $path = "storage/photos/ $data->photo_name";
                 $path = preg_replace('/\s+/', '', $path);
 
                 $vcard->addPhoto(public_path($path));
