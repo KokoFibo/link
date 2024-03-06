@@ -7,12 +7,13 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class RegistrationWR extends Component
 {
     public $is_add, $is_edit, $id;
-    public $name, $email, $kode_agent, $mobile, $whatsapp;
+    public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
     public $instagram, $facebook, $tiktok, $youtube, $photo;
     use WithPagination;
     use WithFileUploads;
@@ -23,6 +24,7 @@ class RegistrationWR extends Component
     {
         $data = User::find($id);
         $this->name = $data->name;
+        $this->title = $data->title;
         $this->email = $data->email;
         $this->kode_agent = $data->kode_agent;
         $this->mobile = $data->mobile;
@@ -39,8 +41,15 @@ class RegistrationWR extends Component
     public function update()
     {
         $this->validate();
+        if ($this->photo) {
+            $filename = md5($this->photo . microtime()) . '.' . $this->photo->extension();
+            $this->photo->storeAs('photos', $filename);
+        } else {
+            $filename = $this->photo;
+        }
         $data = User::find($this->id);
         $data->name = $this->name;
+        $data->title = $this->title;
         $data->email = $this->email;
         $data->kode_agent = $this->kode_agent;
         $data->mobile = $this->mobile;
@@ -49,13 +58,14 @@ class RegistrationWR extends Component
         $data->facebook = $this->facebook;
         $data->tiktok = $this->tiktok;
         $data->youtube = $this->youtube;
-        $data->photo = $this->photo->store(path: 'photos');
+        $data->photo = $filename;
         $data->save();
         $this->is_edit = false;
     }
 
     protected $rules = [
         'name' => 'required',
+        'title' => 'required',
         'email' => 'required',
         'kode_agent' => 'nullable',
         'mobile' => 'nullable',
@@ -64,13 +74,23 @@ class RegistrationWR extends Component
         'facebook' => 'nullable',
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
-        'photo' => 'image|max:1024',
+        'photo' => 'mimes:jpg,png|max:1024|nullable',
+
     ];
     public function save()
     {
         $this->validate();
+        if ($this->photo) {
+            $filename = md5($this->photo . microtime()) . '.' . $this->photo->extension();
+            $this->photo->storeAs('photos', $filename);
+        } else {
+            $filename = $this->photo;
+        }
+
         $data = new User;
         $data->name = $this->name;
+        $data->title = $this->title;
+        $data->password = Hash::make('12345678');
         $data->email = $this->email;
         $data->kode_agent = $this->kode_agent;
         $data->mobile = $this->mobile;
@@ -79,7 +99,9 @@ class RegistrationWR extends Component
         $data->facebook = $this->facebook;
         $data->tiktok = $this->tiktok;
         $data->youtube = $this->youtube;
-        $data->photo = $this->photo->store(path: 'photos');
+        // $data->photo = $filename;
+        // $this->photo->store(path: 'photos');
+        $data->photo = $filename;
         $data->save();
         $this->is_add = false;
     }
@@ -101,6 +123,7 @@ class RegistrationWR extends Component
     public function clear_form()
     {
         $this->name = '';
+        $this->title = '';
         $this->email = '';
         $this->kode_agent = '';
         $this->mobile = '';
@@ -115,7 +138,7 @@ class RegistrationWR extends Component
 
     public function render()
     {
-        $users = User::paginate(10);
+        $users = User::orderBy('id', 'desc')->paginate(5);
         return view('livewire.registration-w-r', [
             'users' => $users,
         ]);
