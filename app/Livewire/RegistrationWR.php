@@ -107,7 +107,7 @@ class RegistrationWR extends Component
         $data->photo_name = $filename;
         $data->photo_path = $path;
         $data->code = Str::toBase64($this->kode_agent);
-        $data->link = 'https://link.accel365.id/card/' . $data->code;
+        $data->link = 'https://link.accel365.id/Card/' . $data->code;
 
         // $this->photo->store(path: 'photos');
 
