@@ -219,6 +219,9 @@
                                     Link
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    QR Code
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Photo
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -271,6 +274,14 @@
                                     </td>
                                     <td class="px-4 py-2">
                                         <a href="{{ $user->link }}" target="_blank">{{ $user->link }}</a>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        {{-- {!! QrCode::size(100)->generate(Request::url()) !!} --}}
+                                        {{-- {{ QrCode::size(100)->generate('Anton') }} --}}
+                                        @if ($user->link)
+                                            {{-- {{ QrCode::size(400)->merge('\public\images\logo.jpg', 0.3, false)->generate($user->link) }} --}}
+                                            {{ QrCode::format('svg')->size(50)->merge('images\logo.png', 0.3, true)->generate($user->link) }}
+                                        @endif
                                     </td>
                                     <td class="px-4 py-2">
                                         @if ($user->photo_path)
