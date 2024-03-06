@@ -193,6 +193,9 @@
                                 </th>
 
                                 <th scope="col" class="px-6 py-3">
+                                    Photo Link
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Photo
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -241,7 +244,10 @@
                                         {{ $user->youtube }}
                                     </td>
                                     <td class="px-4 py-2">
-                                        <img src="{{ asset('storage/photos/' . $user->photo) }}">
+                                        {{ $user->photo_path }}
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <img src="{{ asset('storage/' . $user->photo_path) }}">
                                     </td>
                                     <td class="px-4 py-2 text-right">
 
