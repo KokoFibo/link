@@ -243,6 +243,11 @@
         @else
             <p>File Not Found</p>
         @endif
+
+        <p class="text-sm text-gray-700 text-center py-5 font-thin ">Copyright <i class="fa-regular fa-copyright"></i>
+            Accel365
+            2024
+        </p>
     </div>
 
 @endsection
