@@ -213,6 +213,12 @@
                                     Youtube
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Code
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Link
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Photo
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -259,6 +265,12 @@
                                     </td>
                                     <td class="px-4 py-2">
                                         {{ $user->youtube }}
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        {{ $user->code }}
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        {{ $user->link }}
                                     </td>
                                     <td class="px-4 py-2">
                                         @if ($user->photo_path)
