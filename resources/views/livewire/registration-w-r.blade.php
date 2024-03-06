@@ -191,10 +191,6 @@
                                 <th scope="col" class="px-6 py-3">
                                     Youtube
                                 </th>
-
-                                <th scope="col" class="px-6 py-3">
-                                    Photo Link
-                                </th>
                                 <th scope="col" class="px-6 py-3">
                                     Photo
                                 </th>
@@ -244,10 +240,11 @@
                                         {{ $user->youtube }}
                                     </td>
                                     <td class="px-4 py-2">
-                                        {{ $user->photo_path }}
-                                    </td>
-                                    <td class="px-4 py-2">
-                                        <img src="{{ asset('storage/' . $user->photo_path) }}">
+                                        @if ($user->photo_path)
+                                            <img src="{{ asset('storage/' . $user->photo_path) }}">
+                                        @else
+                                            <p>No Photo available</p>
+                                        @endif
                                     </td>
                                     <td class="px-4 py-2 text-right">
 
