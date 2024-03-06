@@ -22,7 +22,13 @@
                                 placeholder=" " />
                             <label for="floating_name"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
+                            <span class="text-red-500 text-xs">
+                                @error('name')
+                                    {{ $message }}
+                                @enderror
+                            </span>
                         </div>
+
                         {{-- Title --}}
                         <div class="relative z-0 w-full mb-5 group">
                             <input wire:model.live="title" type="text" name="floating_title" id="floating_title"
@@ -30,6 +36,11 @@
                                 placeholder=" " required />
                             <label for="floating_title"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
+                            <span class="text-red-500 text-xs">
+                                @error('title')
+                                    {{ $message }}
+                                @enderror
+                            </span>
                         </div>
                         {{-- Email --}}
                         <div class="relative z-0 w-full mb-5 group">
@@ -39,6 +50,11 @@
                             <label for="floating_email"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
                                 address</label>
+                            <span class="text-red-500 text-xs">
+                                @error('email')
+                                    {{ $message }}
+                                @enderror
+                            </span>
                         </div>
                         {{-- kode_agent --}}
                         <div class="relative z-0 w-full mb-5 group">
@@ -49,6 +65,11 @@
                             <label for="floating_kode_agent"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kode
                                 Agent</label>
+                            <span class="text-red-500 text-xs">
+                                @error('kode_agent')
+                                    {{ $message }}
+                                @enderror
+                            </span>
                         </div>
                         {{-- mobile & Whatsapp --}}
                         <div class="grid md:grid-cols-2 md:gap-6">
@@ -241,7 +262,10 @@
                                     </td>
                                     <td class="px-4 py-2">
                                         @if ($user->photo_path)
-                                            <img src="{{ asset('storage/' . $user->photo_path) }}">
+                                            <div style="width: 50px;">
+                                                <img src="{{ asset('storage/' . $user->photo_path) }}">
+
+                                            </div>
                                         @else
                                             <p>No Photo available</p>
                                         @endif
