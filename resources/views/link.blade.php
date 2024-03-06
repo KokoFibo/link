@@ -2,11 +2,21 @@
 @section('content')
     <div>
         @if ($data != null)
-            <main>
+            <main x-data="{ open: false }">
+                <div x-show="open">
+                    <div class="relative flex flex-col gap-2 items-center ">
+                        <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 300px"
+                            class="rounded-2xl border-2 p-1" />
+                        <button class="bg-black text-white px-3 py-2 close-modal" @click="open=false">Close</button>
+                    </div>
+                </div>
                 <!-- Background Picture -->
                 <div>
                     <img src="{{ url('/images/bg.png') }}" alt="" style="width: 600px; height: 410px" />
                 </div>
+
+
+
 
                 <!-- picture profile -->
                 <div class="flex justify-between p-3 items-end -mt-7">
@@ -15,7 +25,8 @@
                             <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 75px"
                                 class="rounded-full" />
                         @else
-                            <img src="{{ url('/images/pp.png') }}" alt="" style="width: 75px" class="rounded-full" />
+                            <img src="{{ url('/images/pp.png') }}" alt="" style="width: 75px"
+                                class="rounded-full" />
                         @endif
                     </div>
                     <div class="name-title">
@@ -25,8 +36,10 @@
                         </h5>
                     </div>
                     <div class="barcode">
-                        <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 50px"
-                            class="rounded-2xl border-2 p-1" />
+                        <button @click="open = true" class="open-modal">
+                            <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 50px"
+                                class="rounded-2xl border-2 p-1" />
+                        </button>
                     </div>
                 </div>
 
@@ -231,4 +244,5 @@
             <p>File Not Found</p>
         @endif
     </div>
+
 @endsection
