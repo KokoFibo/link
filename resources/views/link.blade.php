@@ -5,14 +5,18 @@
             <main>
                 <!-- Background Picture -->
                 <div>
-                    <!-- <img src="https://source.unsplash.com/random/600x410?nature" alt="" /> -->
                     <img src="{{ url('/images/bg.png') }}" alt="" style="width: 600px; height: 410px" />
                 </div>
 
                 <!-- picture profile -->
                 <div class="flex justify-between p-3 items-end -mt-7">
                     <div class="profile-picture">
-                        <img src="{{ url('/images/pp.png') }}" alt="" style="width: 75px" class="rounded-full" />
+                        @if ($data->photo_path)
+                            <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 75px"
+                                class="rounded-full" />
+                        @else
+                            <img src="{{ url('/images/pp.png') }}" alt="" style="width: 75px" class="rounded-full" />
+                        @endif
                     </div>
                     <div class="name-title">
                         <h5 class="font-semibold text-xl text-gray-700">{{ $data->name }}</h5>
@@ -29,25 +33,36 @@
                 <!-- button whatsapp -->
                 <div class="flex justify-between items-center p-4">
                     <div class="flex gap-3">
-                        <button style="width: 45px; height: 45px" class="bg-blue-100 text-blue-500 rounded-lg">
-                            <i class="fa-solid fa-phone"></i>
-                        </button>
-                        <button style="width: 45px; height: 45px" class="bg-green-100 text-green-500 text-xl rounded-lg">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </button>
+                        <a href="tel:{{ $data->mobile }}">
+                            <button style="width: 45px; height: 45px" class="bg-blue-100 text-blue-500 rounded-lg">
+                                <i class="fa-solid fa-phone"></i>
+                            </button>
+                        </a>
+                        <a href="https://wa.me/{{ $data->whatsapp }}">
+                            <button style="width: 45px; height: 45px"
+                                class="bg-green-100 text-green-500 text-xl rounded-lg">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </button>
+                        </a>
 
-                        <button style="width: 45px; height: 45px" class="bg-red-100 text-red-500 rounded-lg">
-                            <i class="fa-regular fa-envelope"></i>
-                        </button>
-                        <button style="width: 45px; height: 45px" class="bg-teal-100 text-teal-500 rounded-lg">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </button>
+                        <a href="mailto:{{ $data->email }}">
+                            <button style="width: 45px; height: 45px" class="bg-red-100 text-red-500 rounded-lg">
+                                <i class="fa-regular fa-envelope"></i>
+                            </button>
+                        </a>
+                        <a href="https://maps.app.goo.gl/FU5Y65VWziBBwmWU8" target="_blank">
+                            <button style="width: 45px; height: 45px" class="bg-teal-100 text-teal-500 rounded-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </button>
+                        </a>
                     </div>
                     <div>
-                        <button
-                            class="py-3 px-5 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
-                            Save Contact
-                        </button>
+                        <a href="/vcf/{{ $data->code }}">
+                            <button
+                                class="py-3 px-5 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
+                                Save Contact
+                            </button>
+                        </a>
                     </div>
                 </div>
 

@@ -280,7 +280,7 @@
                                         {{-- {{ QrCode::size(100)->generate('Anton') }} --}}
                                         @if ($user->link)
                                             {{-- {{ QrCode::size(400)->merge('\public\images\logo.jpg', 0.3, false)->generate($user->link) }} --}}
-                                            {{ QrCode::format('svg')->size(50)->generate($user->link) }}
+                                            {{ QrCode::size(50)->generate($user->link) }}
                                         @endif
                                     </td>
                                     <td class="px-4 py-2">

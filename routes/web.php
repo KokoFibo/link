@@ -33,5 +33,6 @@ Route::get('/link', Link::class)->name('link');
 
 
 Route::get('/Card/{code}', [UserController::class, 'user']);
+Route::get('/vcf/{code}', [UserController::class, 'vcf']);
 
 require __DIR__ . '/auth.php';
