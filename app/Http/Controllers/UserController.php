@@ -37,7 +37,7 @@ class UserController extends Controller
         $vcard->addLabel('street, worktown, workpostcode Belgium');
         $vcard->addURL('http://www.jeroendesloovere.be');
 
-        $vcard->addPhoto(__DIR__ . '/landscape.jpeg');
+        // $vcard->addPhoto(__DIR__ . '/landscape.jpeg');
 
         // return vcard as a string
         //return $vcard->getOutput();
