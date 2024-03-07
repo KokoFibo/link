@@ -83,7 +83,7 @@ class RegistrationWR extends Component
         'facebook' => 'nullable',
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
-        'photo' => 'mimes:jpg,png|max:1024|nullable',
+        'photo' => 'mimes:jpg,png|max:2048|nullable',
 
     ];
     public function save()
