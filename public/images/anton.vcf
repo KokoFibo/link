@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+REV:2024-03-07T03:13:03Z
+N;CHARSET=utf-8:Anton;;;;
+FN;CHARSET=utf-8:Anton
+ORG;CHARSET=utf-8:FpOne
+TITLE;CHARSET=utf-8:Business Development
+ROLE;CHARSET=utf-8:Data Protection Officer
+EMAIL;INTERNET:kokonacci@gmail.com
+TEL;PREF;WORK:0878123456
+ADR;WORK;POSTAL;CHARSET=utf-8:FP One;Thamrin Nine Complex;Autograph Tower;2
+ 8th Floor;Jl. M.H Thamrin No. 10;10230;Jakarta Pusat
+URL;PREF;My Website:http://www.accel365.id
+END:VCARD
