@@ -254,7 +254,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="{{ $data->instagram }}" target="_blank">
+                                <a href="{{ $data->instagram }}">
                                     <h5 class="text-gray-500">Follow me ></h5>
                                 </a>
                             </div>
@@ -273,7 +273,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="https://facebook.com" target="_blank">
+                                <a href="{{ $data->facebook }}">
                                     <h5 class="text-gray-500">Add as friend ></h5>
                                 </a>
                             </div>
@@ -294,7 +294,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="{{ $data->facebook }}" target="_blank">
+                                <a href="{{ $data->tiktok }}">
                                     <h5 class="text-gray-500">Follow Me ></h5>
                                 </a>
                             </div>
@@ -314,7 +314,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="{{ $data->facebook }}" target="_blank">
+                                <a href="{{ $data->youtube }}">
                                     <h5 class="text-gray-500">Subscribe ></h5>
                                 </a>
                             </div>
