@@ -143,7 +143,9 @@
                     </div>
                     <div>
                         @php
-                            $nama_file = strtolower($data->name) . '-' . $data->kode_agent . '.vcf';
+                            $arrNama = explode(' ', $data->name);
+
+                            $nama_file = strtolower($arrNama[0]) . '-' . $data->kode_agent . '.vcf';
                         @endphp
                         <a href="{{ asset('storage/photos/' . $nama_file) }}" download>
                             <span

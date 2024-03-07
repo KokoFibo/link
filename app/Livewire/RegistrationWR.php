@@ -57,23 +57,23 @@ class RegistrationWR extends Component
         }
 
         $data = new User;
-        $data->name = $this->name;
+        $data->name = trim($this->name);
         $data->title = $this->title;
         $data->password = Hash::make('12345678');
         $data->email = $this->email;
-        $data->kode_agent = $this->kode_agent;
+        $data->kode_agent = trim($this->kode_agent);
         $data->description = $this->description;
         $data->clients = $this->clients;
         $data->claims = $this->claims;
         $data->teams = $this->teams;
 
 
-        $data->mobile = $this->mobile;
-        $data->whatsapp = $this->whatsapp;
-        $data->instagram = $this->instagram;
-        $data->facebook = $this->facebook;
-        $data->tiktok = $this->tiktok;
-        $data->youtube = $this->youtube;
+        $data->mobile = trim($this->mobile);
+        $data->whatsapp = trim($this->whatsapp);
+        $data->instagram = trim($this->instagram);
+        $data->facebook = trim($this->facebook);
+        $data->tiktok = trim($this->tiktok);
+        $data->youtube = trim($this->youtube);
         $data->photo_name = $filename;
         $data->photo_path = $path;
         $data->code = Str::toBase64($this->kode_agent);
@@ -99,21 +99,21 @@ class RegistrationWR extends Component
             $path = $this->photo;
         }
         $data = User::find($this->id);
-        $data->name = $this->name;
+        $data->name = trim($this->name);
         $data->title = $this->title;
         $data->email = $this->email;
-        $data->kode_agent = $this->kode_agent;
+        $data->kode_agent = trim($this->kode_agent);
         $data->description = $this->description;
         $data->clients = $this->clients;
         $data->claims = $this->claims;
         $data->teams = $this->teams;
 
-        $data->mobile = $this->mobile;
-        $data->whatsapp = $this->whatsapp;
-        $data->instagram = $this->instagram;
-        $data->facebook = $this->facebook;
-        $data->tiktok = $this->tiktok;
-        $data->youtube = $this->youtube;
+        $data->mobile = trim($this->mobile);
+        $data->whatsapp = trim($this->whatsapp);
+        $data->instagram = trim($this->instagram);
+        $data->facebook = trim($this->facebook);
+        $data->tiktok = trim($this->tiktok);
+        $data->youtube = trim($this->youtube);
         if ($this->photo) {
             $data->photo_name = $filename;
             $data->photo_path = $path;
@@ -181,6 +181,11 @@ class RegistrationWR extends Component
         $this->youtube = '';
         $this->photo = '';
     }
+    public function getFrontName($nama)
+    {
+        $arrNama = explode(' ', $nama);
+        return $arrNama[0];
+    }
 
     public function generateVCF($id)
     {
@@ -222,7 +227,9 @@ class RegistrationWR extends Component
             } else {
                 $vcard->addPhoto(public_path('/images/pp.png'));
             }
-            $nama_file = $data->name . '-' . $data->kode_agent;
+            $frontName = $this->getFrontName(trim($data->name));
+
+            $nama_file = $frontName . '-' . trim($data->kode_agent);
             $vcard->setFilename($nama_file, true);
 
             // return vcard as a string
