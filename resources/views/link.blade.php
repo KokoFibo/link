@@ -70,7 +70,8 @@
                         </a>
                     </div>
                     <div>
-                        <a href="{{ asset('images/anton.vcf') }}" download>
+                        {{-- <a href="{{ asset('images/anton.vcf') }}" download> --}}
+                        <a href="{{ asset('storage/photos/anton.vcf') }}" download>
 
                             {{-- {{ asset('storage/' . $user->photo_path) }} --}}
                             <span
