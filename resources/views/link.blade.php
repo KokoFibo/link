@@ -3,16 +3,85 @@
     <div class="lg:w-1/3 w-full mx-auto">
         @if ($data != null)
             <main x-data="{ open: false }">
-                <div x-show="open">
-                    <div class="relative flex flex-col gap-2 items-center ">
-                        <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 300px"
-                            class="rounded-2xl border-2 p-1" />
-                        <button class="bg-black text-white px-3 py-2 close-modal" @click="open=false">Close</button>
+                {{-- <div x-show="open" class=" flex justify-center items-center"> --}}
+                {{-- <div class="flex flex-col  items-center">
+
+                        <div class="bg-green-600 w-full h-screen">
+                            <div class="rounded-2xl border-2 p-1">
+                                {{ QrCode::size(300)->eye('circle')->generate($data->link) }}
+                            </div>
+                        </div>
+                        <button class="bg-black text-white px-4 py-2 rounded shadow" @click="open=false">Close</button>
+                    </div> --}}
+
+
+
+
+                <!-- Main modal -->
+                <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="  w-full lg:w-1/3 max-h-full fixed bottom-0">
+                        <!-- Modal content -->
+                        <div class="relative bg-white pb-5 rounded-tl-3xl rounded-tr-3xl shadow dark:bg-gray-700"
+                            id="animatedDiv">
+                            <!-- Modal header -->
+                            <div
+                                class="flex items-center gap-5 justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                <div class="profile-picture">
+                                    @if ($data->photo_path)
+                                        <img src="{{ asset('storage/' . $data->photo_path) }}" alt=""
+                                            style="width: 60px" class="rounded-full" />
+                                    @else
+                                        <img src="{{ url('/images/pp.png') }}" alt="" style="width: 60px"
+                                            class="rounded-full" />
+                                    @endif
+                                </div>
+                                <div class="flex flex-col text-gray-600">
+
+                                    <h3 class="text-xl font-semibold text-gray-600 dark:text-white">
+                                        {{ $data->name }}
+                                    </h3>
+                                    <p class="text-sm ">{{ $data->title }}</p>
+                                </div>
+                                <button type="button"
+                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                    data-modal-hide="static-modal">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-4 md:p-5 flex justify-center">
+                                <div class="pt-6">
+                                    {{ QrCode::size(300)->eye('circle')->generate($data->link) }}
+                                </div>
+                            </div>
+                            <!-- Modal footer -->
+                            {{-- <div
+                                class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button data-modal-hide="static-modal" type="button"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I
+                                    accept</button>
+                                <button data-modal-hide="static-modal" type="button"
+                                    class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
+                            </div> --}}
+                        </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
                 <!-- Background Picture -->
                 <div>
-                    <img src="{{ url('/images/bg.png') }}" alt="" style="width: 600px; height: 410px" />
+                    <img src="{{ url('/images/bg.png') }}" alt="" class=" w-full" style=" height: 410px" />
                 </div>
 
                 <!-- picture profile -->
@@ -33,7 +102,7 @@
                         </h5>
                     </div>
                     <div class="barcode">
-                        <button @click="open = true" class="open-modal">
+                        <button data-modal-target="static-modal" data-modal-toggle="static-modal">
                             <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 50px"
                                 class="rounded-2xl border-2 p-1" />
                         </button>
@@ -270,7 +339,7 @@
                 </div>
             </main>
         @else
-            <p>File Not Found</p>
+            <p>File Not Found euy</p>
         @endif
 
         <p class="text-sm text-gray-700 text-center pt-3 pb-8 font-thin ">Copyright <span>©</span>
