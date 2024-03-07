@@ -70,15 +70,18 @@
                         </a>
                     </div>
                     <div>
-                        {{-- <a href="{{ asset('images/anton.vcf') }}" download> --}}
-                        <a href="{{ asset('storage/photos/anton.vcf') }}" download>
-
-                            {{-- {{ asset('storage/' . $user->photo_path) }} --}}
+                        <a href="{{ asset('storage/photos/antonf.vcf') }}" download>
                             <span
                                 class="py-3 px-5 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
                                 Save Contact
                             </span>
                         </a>
+                        {{-- <a href="/vcf/{{ $data->code }}">
+                            <button
+                                class="py-3 px-5 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
+                                Save Contact
+                            </button>
+                        </a> --}}
                     </div>
                 </div>
 
