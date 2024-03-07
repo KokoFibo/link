@@ -2,7 +2,7 @@
 @section('content')
     <div class="lg:w-1/3 w-full mx-auto">
         @if ($data != null)
-            <main x-data="{ open: false }">
+            <main>
                 {{-- <div x-show="open" class=" flex justify-center items-center"> --}}
                 {{-- <div class="flex flex-col  items-center">
 
@@ -85,22 +85,26 @@
                 </div>
 
                 <!-- picture profile -->
-                <div class="flex justify-between p-3 items-end -mt-7">
-                    <div class="profile-picture">
-                        @if ($data->photo_path)
-                            <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 75px"
-                                class="rounded-full" />
-                        @else
-                            <img src="{{ url('/images/pp.png') }}" alt="" style="width: 75px"
-                                class="rounded-full" />
-                        @endif
+
+                <div class=" flex  -mt-7  p-3 w-full justify-between items-end">
+                    <div class="flex items-end gap-3">
+                        <div class="profile-picture">
+                            @if ($data->photo_path)
+                                <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 75px"
+                                    class="rounded-full" />
+                            @else
+                                <img src="{{ url('/images/pp.png') }}" alt="" style="width: 75px"
+                                    class="rounded-full" />
+                            @endif
+                        </div>
+                        <div class="name-title">
+                            <h5 class="font-semibold text-xl text-gray-700">{{ $data->name }}</h5>
+                            <h5 class="font-semibold text-sm text-gray-500">
+                                {{ $data->title }}
+                            </h5>
+                        </div>
                     </div>
-                    <div class="name-title">
-                        <h5 class="font-semibold text-xl text-gray-700">{{ $data->name }}</h5>
-                        <h5 class="font-semibold text-sm text-gray-500">
-                            {{ $data->title }}
-                        </h5>
-                    </div>
+
                     <div class="barcode">
                         <button data-modal-target="static-modal" data-modal-toggle="static-modal">
                             <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 50px"
@@ -108,6 +112,8 @@
                         </button>
                     </div>
                 </div>
+
+
 
                 <!-- button whatsapp -->
                 <div class="flex justify-between items-center p-4">
@@ -267,7 +273,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="{{ $data->facebook }}" target="_blank">
+                                <a href="https://facebook.com" target="_blank">
                                     <h5 class="text-gray-500">Add as friend ></h5>
                                 </a>
                             </div>
