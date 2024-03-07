@@ -18,7 +18,7 @@ class RegistrationWR extends Component
     use WithFileUploads;
     public $is_add, $is_edit, $id;
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
-    public $instagram, $facebook, $tiktok, $youtube, $photo;
+    public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams;
 
 
 
@@ -30,6 +30,10 @@ class RegistrationWR extends Component
         $this->title = $data->title;
         $this->email = $data->email;
         $this->kode_agent = $data->kode_agent;
+        $this->description = $data->description;
+        $this->clients = $data->clients;
+        $this->claims = $data->claims;
+        $this->teams = $data->teams;
         $this->mobile = $data->mobile;
         $this->whatsapp = $data->whatsapp;
         $this->instagram = $data->instagram;
@@ -39,6 +43,49 @@ class RegistrationWR extends Component
         $this->photo = $data->photo;
         $this->id = $id;
         $this->is_edit = true;
+    }
+
+    public function save()
+    {
+        $this->validate();
+        if ($this->photo) {
+            $filename = md5($this->photo . microtime()) . '.' . $this->photo->extension();
+            $path = $this->photo->storeAs('photos', $filename, 'public');
+        } else {
+            $filename = $this->photo;
+            $path = $this->photo;
+        }
+
+        $data = new User;
+        $data->name = $this->name;
+        $data->title = $this->title;
+        $data->password = Hash::make('12345678');
+        $data->email = $this->email;
+        $data->kode_agent = $this->kode_agent;
+        $data->description = $this->description;
+        $data->clients = $this->clients;
+        $data->claims = $this->claims;
+        $data->teams = $this->teams;
+
+
+        $data->mobile = $this->mobile;
+        $data->whatsapp = $this->whatsapp;
+        $data->instagram = $this->instagram;
+        $data->facebook = $this->facebook;
+        $data->tiktok = $this->tiktok;
+        $data->youtube = $this->youtube;
+        $data->photo_name = $filename;
+        $data->photo_path = $path;
+        $data->code = Str::toBase64($this->kode_agent);
+        $data->link = 'https://link.accel365.id/Card/' . $data->code;
+
+        // $this->photo->store(path: 'photos');
+
+        // $data->photo = $filename;
+        $data->save();
+        $this->generateVCF($data->id);
+        $this->is_add = false;
+        $this->reset();
     }
 
     public function update()
@@ -56,6 +103,11 @@ class RegistrationWR extends Component
         $data->title = $this->title;
         $data->email = $this->email;
         $data->kode_agent = $this->kode_agent;
+        $data->description = $this->description;
+        $data->clients = $this->clients;
+        $data->claims = $this->claims;
+        $data->teams = $this->teams;
+
         $data->mobile = $this->mobile;
         $data->whatsapp = $this->whatsapp;
         $data->instagram = $this->instagram;
@@ -78,52 +130,21 @@ class RegistrationWR extends Component
         'name' => 'required',
         'title' => 'required',
         'email' => 'required',
-        'kode_agent' => 'required|integer',
+        'kode_agent' => 'required|numeric',
+        'description' => 'nullable',
+        'clients' => 'nullable',
+        'claims' => 'nullable',
+        'teams' => 'nullable',
         'mobile' => 'nullable',
         'whatsapp' => 'nullable',
         'instagram' => 'nullable',
         'facebook' => 'nullable',
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
-        'photo' => 'mimes:jpg,png|max:2048|nullable',
+        'photo' => 'mimes:jpg,png|max:1024|nullable',
 
     ];
-    public function save()
-    {
-        $this->validate();
-        if ($this->photo) {
-            $filename = md5($this->photo . microtime()) . '.' . $this->photo->extension();
-            $path = $this->photo->storeAs('photos', $filename, 'public');
-        } else {
-            $filename = $this->photo;
-            $path = $this->photo;
-        }
 
-        $data = new User;
-        $data->name = $this->name;
-        $data->title = $this->title;
-        $data->password = Hash::make('12345678');
-        $data->email = $this->email;
-        $data->kode_agent = $this->kode_agent;
-        $data->mobile = $this->mobile;
-        $data->whatsapp = $this->whatsapp;
-        $data->instagram = $this->instagram;
-        $data->facebook = $this->facebook;
-        $data->tiktok = $this->tiktok;
-        $data->youtube = $this->youtube;
-        $data->photo_name = $filename;
-        $data->photo_path = $path;
-        $data->code = Str::toBase64($this->kode_agent);
-        $data->link = 'https://link.accel365.id/Card/' . $data->code;
-
-        // $this->photo->store(path: 'photos');
-
-        // $data->photo = $filename;
-        $data->save();
-        $this->generateVCF($data->id);
-        $this->is_add = false;
-        $this->reset();
-    }
 
     public function delete($id)
     {
@@ -146,6 +167,12 @@ class RegistrationWR extends Component
         $this->title = '';
         $this->email = '';
         $this->kode_agent = '';
+        $this->description = '';
+        $this->clients = '';
+        $this->claims = '';
+        $this->teams = '';
+
+
         $this->mobile = '';
         $this->whatsapp = '';
         $this->instagram = '';
