@@ -234,6 +234,7 @@
                 <!-- Social Media -->
                 <div>
                     <h3 class="text-xl font-semibold m-4 text-gray-600">Social Media</h3>
+                    <p>{{ $data->facebook }}, {{ $data->instagram }}, {{ $data->tiktok }}, {{ $data->youtube }}</p>
                     {{-- instagram --}}
                     @if ($data->instagram)
                         <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
@@ -253,8 +254,6 @@
                             </div>
                         </div>
                     @endif
-
-
                     {{-- Facebook --}}
                     @if ($data->facebook)
                         <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
