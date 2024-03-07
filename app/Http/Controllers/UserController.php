@@ -42,10 +42,9 @@ class UserController extends Controller
             if ($data->photo_path) {
                 $path = "storage/photos/ $data->photo_name";
                 $path = preg_replace('/\s+/', '', $path);
-
+                $path = storage_path('app/public/photos/' . $data->photo_name);
                 // $vcard->addPhoto(public_path($path));
-                $vcard->addPhoto(public_path($path));
-                // $vcard->addPhoto(__DIR__ . $path);
+                $vcard->addPhoto($path);
             } else {
                 $vcard->addPhoto(public_path('/images/pp.png'));
             }
@@ -54,7 +53,17 @@ class UserController extends Controller
             //return $vcard->getOutput();
 
             // return vcard as a download
+            // return $vcard->download();
+
+            // save vcard on disk
+            $path = storage_path('app/public/photos');
+            $vcard->setSavePath($path);
+            $vcard->save();
             return $vcard->download();
+
+            // return back();
+
+            // echo message
 
 
             // $vcard->setSavePath(storage_path('vcard/'));
