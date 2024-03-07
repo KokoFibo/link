@@ -244,7 +244,7 @@
             <p>File Not Found</p>
         @endif
 
-        <p class="text-sm text-gray-700 text-center py-5 font-thin ">Copyright <i class="fa-regular fa-copyright"></i>
+        <p class="text-sm text-gray-700 text-center pt-3 pb-8 font-thin ">Copyright <span>©</span>
             Accel365
             2024
         </p>
