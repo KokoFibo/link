@@ -20,6 +20,7 @@ class UserController extends Controller
             // define variables
             // $lastname = ;
             $firstname = $data->name;
+
             // $additional = '';
             // $prefix = '';
             // $suffix = '';
@@ -48,6 +49,8 @@ class UserController extends Controller
             } else {
                 $vcard->addPhoto(public_path('/images/pp.png'));
             }
+            $nama_file = $data->name . '-' . $data->kode_agent;
+            $vcard->setFilename($nama_file, true);
 
             // return vcard as a string
             //return $vcard->getOutput();

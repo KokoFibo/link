@@ -70,18 +70,21 @@
                         </a>
                     </div>
                     <div>
-                        {{-- <a href="{{ asset('storage/photos/antonf.vcf') }}" download>
+                        @php
+                            $nama_file = strtolower($data->name) . '-' . $data->kode_agent . '.vcf';
+                        @endphp
+                        <a href="{{ asset('storage/photos/' . $nama_file) }}" download>
                             <span
                                 class="py-3 px-5 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
                                 Save Contact
                             </span>
-                        </a> --}}
-                        <a href="/vcf/{{ $data->code }}">
+                        </a>
+                        {{-- <a href="/vcf/{{ $data->code }}">
                             <button
                                 class="py-3 px-5 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
                                 Save Contact
                             </button>
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
 
