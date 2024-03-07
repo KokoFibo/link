@@ -70,11 +70,13 @@
                         </a>
                     </div>
                     <div>
-                        <a href="/vcf/{{ $data->code }}">
-                            <button
+                        <a href="{{ asset('images/anton.vcf') }}" download>
+
+                            {{-- {{ asset('storage/' . $user->photo_path) }} --}}
+                            <span
                                 class="py-3 px-5 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
                                 Save Contact
-                            </button>
+                            </span>
                         </a>
                     </div>
                 </div>
