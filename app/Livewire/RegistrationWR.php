@@ -62,8 +62,10 @@ class RegistrationWR extends Component
         $data->facebook = $this->facebook;
         $data->tiktok = $this->tiktok;
         $data->youtube = $this->youtube;
-        $data->photo_name = $filename;
-        $data->photo_path = $path;
+        if ($this->photo) {
+            $data->photo_name = $filename;
+            $data->photo_path = $path;
+        }
         $data->code = Str::toBase64($this->kode_agent);
         $data->link = 'https://link.accel365.id/Card/' . $data->code;
         $data->save();
@@ -83,7 +85,7 @@ class RegistrationWR extends Component
         'facebook' => 'nullable',
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
-        'photo' => 'mimes:jpg,png|max:1024|nullable',
+        'photo' => 'mimes:jpg,png|max:2048|nullable',
 
     ];
     public function save()
@@ -131,9 +133,9 @@ class RegistrationWR extends Component
 
     public function mount()
     {
-
         $this->is_add = 0;
         $this->is_edit = 0;
+        $this->is_editPhoto = 0;
         $this->clear_form();
     }
 

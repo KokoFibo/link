@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('content')
-    <div>
+    <div class="lg:w-1/3 w-full mx-auto">
         @if ($data != null)
             <main x-data="{ open: false }">
                 <div x-show="open">
@@ -14,9 +14,6 @@
                 <div>
                     <img src="{{ url('/images/bg.png') }}" alt="" style="width: 600px; height: 410px" />
                 </div>
-
-
-
 
                 <!-- picture profile -->
                 <div class="flex justify-between p-3 items-end -mt-7">
@@ -75,7 +72,7 @@
                         @endphp
                         <a href="{{ asset('storage/photos/' . $nama_file) }}" download>
                             <span
-                                class="py-3 px-5 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
+                                class="py-3 px-4 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
                                 Save Contact
                             </span>
                         </a>
@@ -89,31 +86,24 @@
                 </div>
 
                 <!-- Kotak 100+ clients -->
-                <div class="flex border-2 justify-between gap-3 p-3 m-3 rounded-xl text-xl text-gray-600">
+                <div class="flex border-2 justify-between gap-3 p-3 m-3 rounded-xl text-gray-600 items-center">
                     <div class="mx-auto text-center">
-                        <p class="font-semibold mb-1">100+</p>
+                        <p class="font-semibold text-xl mb-2">{{ $data->clients }}</p>
                         <p>Clients</p>
                     </div>
                     <div class="mx-auto text-center">
-                        <p class="font-semibold mb-2">80+</p>
+                        <p class="font-semibold text-xl mb-2">{{ $data->claims }}</p>
                         <p>Claims</p>
                     </div>
                     <div class="mx-auto text-center">
-                        <p class="font-semibold mb-2">20+</p>
+                        <p class="font-semibold text-xl mb-2">{{ $data->teams }}</p>
                         <p>Teams</p>
                     </div>
                 </div>
 
                 <!-- About me -->
                 <div class="m-4 text-gray-600">
-                    <p class="mb-2">
-                        Seorang Financial Planner yang sudah berlisensi dan berpengalaman di
-                        industri asuransi jiwa.
-                    </p>
-                    <p>
-                        Saya siap membantu Anda mengatur masa depan keluarga tercinta yang lebih
-                        baik.
-                    </p>
+                    <p>{{ $data->description }}</p>
                 </div>
 
                 <!-- Profile -->
@@ -127,7 +117,7 @@
                             </div>
                             <div>
                                 <div>Name</div>
-                                <div class="text-lg font-semibold">Ester Chen</div>
+                                <div class="text-lg font-semibold">{{ $data->name }}</div>
                             </div>
                         </div>
                         <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 mx-7" />
@@ -137,8 +127,8 @@
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
-                                <div>Phone</div>
-                                <div class="text-lg font-semibold">0878 8888 8888</div>
+                                <div>Mobile</div>
+                                <div class="text-lg font-semibold">{{ $data->mobile }}</div>
                             </div>
                         </div>
                         <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 mx-7" />
@@ -150,7 +140,7 @@
                             </div>
                             <div>
                                 <div>Email</div>
-                                <div class="text-lg font-semibold">myemail@gmail.com</div>
+                                <div class="text-lg font-semibold">{{ $data->email }}</div>
                             </div>
                         </div>
                         <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 mx-7" />
@@ -163,7 +153,9 @@
                             <div>
                                 <div>Office</div>
                                 <div class="text-lg font-semibold">FPOne</div>
-                                <div>Jl. M.H. Thamrin No.10</div>
+                                <div>Thamrin Nine Complex</div>
+                                <div>Autograph Tower 28th Floor</div>
+                                <div>Jl. M.H Thamrin No. 10</div>
 
                                 <div>Jakarta Pusat - 10230</div>
                             </div>
@@ -173,62 +165,88 @@
                 <!-- Social Media -->
                 <div>
                     <h3 class="text-xl font-semibold m-4 text-gray-600">Social Media</h3>
-                    <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
-                        <div class="flex gap-5 items-center">
-                            <div style="width: 50px; height: 50px"
-                                class="border-2 rounded-xl flex justify-center items-center text-3xl bg-red-100 text-red-500">
-                                <i class="fa-brands fa-instagram"></i>
+                    {{-- instagram --}}
+                    @if ($data->instagram)
+                        <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
+                            <div class="flex gap-5 items-center">
+                                <div style="width: 50px; height: 50px"
+                                    class="border-2 rounded-xl flex justify-center items-center text-3xl bg-red-100 text-red-500">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-xl text-gray-600">Instagram</h3>
+                                </div>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-xl text-gray-600">Instagram</h3>
+                                <a href="{{ $data->instagram }}" target="_blank">
+                                    <h5 class="text-gray-500">Follow me ></h5>
+                                </a>
                             </div>
                         </div>
-                        <div>
-                            <h5 class="text-gray-500">Follow me ></h5>
-                        </div>
-                    </div>
-                    <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
-                        <div class="flex gap-5 items-center">
-                            <div style="width: 50px; height: 50px"
-                                class="border-2 rounded-xl flex justify-center items-center text-3xl bg-blue-100 text-blue-500">
-                                <i class="fa-brands fa-facebook"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-xl text-gray-600">Facebook</h3>
-                            </div>
-                        </div>
-                        <div>
-                            <h5 class="text-gray-500">Add as friend ></h5>
-                        </div>
-                    </div>
-                    <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
-                        <div class="flex gap-5 items-center">
-                            <div style="width: 50px; height: 50px"
-                                class="border-2 rounded-xl flex justify-center items-center text-3xl bg-black text-red-500">
-                                <i class="fa-brands fa-tiktok"></i>
+                    @endif
+
+
+                    {{-- Facebook --}}
+                    @if ($data->facebook)
+                        <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
+                            <div class="flex gap-5 items-center">
+                                <div style="width: 50px; height: 50px"
+                                    class="border-2 rounded-xl flex justify-center items-center text-3xl bg-blue-100 text-blue-500">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-xl text-gray-600">Facebook</h3>
+                                </div>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-xl text-gray-600">Tik Tok</h3>
+                                <a href="{{ $data->facebook }}" target="_blank">
+                                    <h5 class="text-gray-500">Add as friend ></h5>
+                                </a>
                             </div>
                         </div>
-                        <div>
-                            <h5 class="text-gray-500">Follow Me ></h5>
-                        </div>
-                    </div>
-                    <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
-                        <div class="flex gap-5 items-center">
-                            <div style="width: 50px; height: 50px"
-                                class="border-2 rounded-xl flex justify-center items-center text-3xl bg-red-100 text-red-500">
-                                <i class="fa-brands fa-youtube"></i>
+                    @endif
+
+
+                    {{-- Tik Tok --}}
+                    @if ($data->tiktok)
+                        <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
+                            <div class="flex gap-5 items-center">
+                                <div style="width: 50px; height: 50px"
+                                    class="border-2 rounded-xl flex justify-center items-center text-3xl bg-black text-red-500">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-xl text-gray-600">Tik Tok</h3>
+                                </div>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-xl text-gray-600">Youtube</h3>
+                                <a href="{{ $data->facebook }}" target="_blank">
+                                    <h5 class="text-gray-500">Follow Me ></h5>
+                                </a>
                             </div>
                         </div>
-                        <div>
-                            <h5 class="text-gray-500">Subscribe ></h5>
+                    @endif
+
+                    {{-- Youtube --}}
+                    @if ($data->youtube)
+                        <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">
+                            <div class="flex gap-5 items-center">
+                                <div style="width: 50px; height: 50px"
+                                    class="border-2 rounded-xl flex justify-center items-center text-3xl bg-red-100 text-red-500">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-xl text-gray-600">Youtube</h3>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="{{ $data->facebook }}" target="_blank">
+                                    <h5 class="text-gray-500">Subscribe ></h5>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
                 </div>
                 <!-- get in touch -->
                 <div>
@@ -244,7 +262,9 @@
                             </div>
                         </div>
                         <div>
-                            <h5 class="text-gray-500">Send message ></h5>
+                            <a href="https://wa.me/{{ $data->whatsapp }}">
+                                <h5 class="text-gray-500">Send message ></h5>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -17,12 +17,16 @@ return new class extends Migration
             $table->string('title');
             $table->string('email')->unique();
             $table->string('kode_agent')->nullable();
+            $table->text('description')->nullable();
             $table->string('mobile')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
             $table->string('tiktok')->nullable();
             $table->string('youtube')->nullable();
+            $table->string('clients')->nullable();
+            $table->string('claims')->nullable();
+            $table->string('teams')->nullable();
             $table->string('photo_name')->nullable();
             $table->string('photo_path')->nullable();
             $table->timestamp('email_verified_at')->nullable();

@@ -3,14 +3,14 @@
     {{-- <x-navbar></x-navbar> --}}
     <livewire:NavbarMenu />
     <main class="text-gray-600">
-        <h1 class="text-3xl font-semibold text-center mt-5">Registration {{ $is_add }}</h1>
+        <h1 class="text-3xl font-semibold text-center mt-5">Registration {{ $photo }}</h1>
 
         {{-- Add Data --}}
         @if ($is_add || $is_edit)
             <div class="mt-10">
 
                 <div href="#"
-                    class="block w-1/3 mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    class="block w-full lg:w-1/3 mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
 
 
