@@ -4,13 +4,14 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use JeroenDesloovere\VCard\VCard;
+use Psy\CodeCleaner\AssignThisVariablePass;
 
 class RegistrationWR extends Component
 {
@@ -18,9 +19,27 @@ class RegistrationWR extends Component
     use WithFileUploads;
     public $is_add, $is_edit, $id;
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
-    public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code;
+    public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code, $form_open;
 
 
+    public function addNew()
+    {
+
+        $this->reset();
+        $this->is_add = true;
+        $this->form_open = true;
+    }
+
+    public function cancel()
+    {
+        dd('ok');
+
+        $this->is_edit = false;
+        $this->is_add = false;
+        $this->form_open = false;
+
+        $this->reset();
+    }
 
 
     public function edit($id)
@@ -45,6 +64,7 @@ class RegistrationWR extends Component
         $this->code = $data->code;
         $this->real_code = $data->code;
         $this->is_edit = true;
+        $this->form_open = true;
     }
 
     public function save()
@@ -85,8 +105,10 @@ class RegistrationWR extends Component
 
         // $data->photo = $filename;
         $data->save();
-        $this->generateVCF($data->id);
+        generateVCF($data->id);
         $this->is_add = false;
+        $this->form_open = false;
+
         $this->reset();
     }
 
@@ -125,16 +147,17 @@ class RegistrationWR extends Component
             $data->link = 'https://link.accel365.id/Card/' . $data->code;
         }
         $data->save();
-        $this->generateVCF($data->id);
+        generateVCF($data->id);
 
         $this->is_edit = false;
+        $this->form_open = false;
     }
 
     protected $rules = [
         'name' => 'required',
-        'title' => 'required',
+        'title' => 'nullable',
         'email' => 'required',
-        'kode_agent' => 'required|numeric',
+        'kode_agent' => 'nullable|numeric',
         'description' => 'nullable',
         'clients' => 'nullable',
         'claims' => 'nullable',
@@ -186,86 +209,9 @@ class RegistrationWR extends Component
         $this->youtube = '';
         $this->photo = '';
     }
-    public function getFrontName($nama)
-    {
-        $arrNama = explode(' ', $nama);
-        return $arrNama[0];
-    }
-
-    public function generateVCF($id)
-    {
-        $data = User::find($id);
-
-        if ($data) {
-            // define vcard
-            $vcard = new VCard();
-
-            // define variables
-            // $lastname = ;
-            $firstname = $data->name;
-
-            // $additional = '';
-            // $prefix = '';
-            // $suffix = '';
-
-            // add personal data
-            // $vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
-            $vcard->addName($firstname);
-
-            // add work data
-            $vcard->addCompany('FpOne');
-            $vcard->addJobtitle($data->title);
-            $vcard->addRole('Data Protection Officer');
-            $vcard->addEmail($data->email);
-            $vcard->addPhoneNumber($data->mobile, 'PREF;WORK');
-            // $vcard->addPhoneNumber(123456789, 'WORK');
-            // $vcard->addAddress(null, null, 'street', 'worktown', null, 'workpostcode', 'Belgium');
-            $vcard->addAddress('FP One', 'Thamrin Nine Complex', 'Autograph Tower', '28th Floor', 'Jl. M.H Thamrin No. 10', '10230', 'Jakarta Pusat');
-            // $vcard->addLabel('street, worktown, workpostcode Belgium');
-            $vcard->addURL('http://www.accel365.id', 'PREF;My Website');
-            if ($data->photo_path) {
-                $path = "storage/photos/ $data->photo_name";
-                $path = preg_replace('/\s+/', '', $path);
-                $path = storage_path('app/public/photos/' . $data->photo_name);
-                // $vcard->addPhoto(public_path($path));
-                $vcard->addPhoto($path);
-            } else {
-                $vcard->addPhoto(public_path('/images/pp.png'));
-            }
-            $frontName = $this->getFrontName(trim($data->name));
-
-            $nama_file = $frontName . '-' . trim($data->kode_agent);
-            $vcard->setFilename($nama_file, true);
-
-            // return vcard as a string
-            //return $vcard->getOutput();
-
-            // return vcard as a download
-            // return $vcard->download();
-
-            // save vcard on disk
-            $path = storage_path('app/public/photos');
-            $vcard->setSavePath($path);
-            $vcard->save();
-            // return $vcard->download();
-
-            // return back();
-
-            // echo message
 
 
-            // $vcard->setSavePath(storage_path('vcard/'));
-            // $vcard->save();
-            // $filename = $vcard->getFileName();
-            // return response()->download(storage_path("vcard/{$filename}"));
 
-            // save vcard on disk
-            //$vcard->setSavePath('/path/to/directory');
-            // $vcard->save();
-        } else {
-            return back();
-        }
-    }
 
 
     public function render()
