@@ -56,8 +56,8 @@ function generateVCF($id)
         // add work data
         $vcard->addCompany('FpOne');
         $vcard->addJobtitle($data->title);
-        $vcard->addRole('Data Protection Officer');
-        $vcard->addEmail($data->email);
+        // $vcard->addRole('Data Protection Officer');
+        $vcard->addEmail($data->email, 'PREF;WORK');
         $vcard->addPhoneNumber($data->mobile, 'PREF;WORK');
         // $vcard->addPhoneNumber(123456789, 'WORK');
         // $vcard->addAddress(null, null, 'street', 'worktown', null, 'workpostcode', 'Belgium');
