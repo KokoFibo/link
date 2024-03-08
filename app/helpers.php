@@ -57,12 +57,12 @@ function generateVCF($id)
         $vcard->addCompany('FpOne');
         $vcard->addJobtitle($data->title);
         // $vcard->addRole('Data Protection Officer');
-        $vcard->addEmail($data->email, 'PREF;EMAIL');
+        $vcard->addEmail($data->email, 'PREF;WORK');
         $vcard->addPhoneNumber($data->mobile, 'PREF;WORK');
         // $vcard->addPhoneNumber(123456789, 'WORK');
         // $vcard->addAddress(null, null, 'street', 'worktown', null, 'workpostcode', 'Belgium');
         $vcard->addAddress('FP One', 'Thamrin Nine Complex', 'Autograph Tower', '28th Floor', 'Jl. M.H Thamrin No. 10', '10230', 'Jakarta Pusat');
-        $vcard->addLabel('street, worktown, workpostcode Belgium');
+        // $vcard->addLabel('street, worktown, workpostcode Belgium');
         $vcard->addURL('https://www.accel365.id');
         if ($data->photo_path) {
             $path = "storage/photos/ $data->photo_name";
