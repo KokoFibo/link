@@ -11,6 +11,12 @@
                 <div class="p-6 text-gray-900">
                     Hello {{ auth()->user()->name }}
                 </div>
+
+                <div class=p-4>
+                    <a href="{{ getLink(auth()->user()->id) }}"><button
+                            class="bg-purple-500 text-white px-4 py-2 rounded-3xl shadow">visit your digital business
+                            card</button></a>
+                </div>
             </div>
         </div>
     </div>

@@ -6,6 +6,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use JeroenDesloovere\VCard\VCard;
 
+function getLink($id)
+{
+    $data = User::find($id);
+    if ($data != null) {
+        return  $data->link;
+    } else {
+        return  '';
+    }
+}
+
 function nama_file($nama_file, $kode_agent)
 {
     $arrNama = explode(' ', $nama_file);

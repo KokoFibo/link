@@ -347,7 +347,7 @@
                 </div>
             </main>
         @else
-            <p>File Not Found euy</p>
+            <p>Data Not Found</p>
         @endif
 
         <p class="text-sm text-gray-700 text-center pt-3 pb-8 font-thin ">Copyright <span>©</span>
