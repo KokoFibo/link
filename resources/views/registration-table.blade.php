@@ -40,13 +40,14 @@
                          <th scope="col" class="px-6 py-3">
                              Code
                          </th>
-                         <th scope="col" class="px-6 py-3">
-                             Link
-                         </th>
+
                          <th scope="col" class="px-6 py-3">
                              QR Code
                          </th>
                      @endif
+                     <th scope="col" class="px-6 py-3">
+                         Link
+                     </th>
                      <th scope="col" class="px-6 py-3">
                          Photo
                      </th>
@@ -99,9 +100,7 @@
                              <td class="px-4 py-2">
                                  {{ $user->code }}
                              </td>
-                             <td class="px-4 py-2">
-                                 <a href="{{ $user->link }}" target="_blank">{{ $user->link }}</a>
-                             </td>
+
                              <td class="px-4 py-2">
                                  {{-- {!! QrCode::size(100)->generate(Request::url()) !!} --}}
                                  {{-- {{ QrCode::size(100)->generate('Anton') }} --}}
@@ -111,6 +110,9 @@
                                  @endif
                              </td>
                          @endif
+                         <td class="px-4 py-2">
+                             <a href="{{ $user->link }}" target="_blank">{{ $user->link }}</a>
+                         </td>
                          <td class="px-4 py-2">
                              @if ($user->photo_path)
                                  <div style="width: 50px;">
