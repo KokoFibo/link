@@ -62,8 +62,8 @@ function generateVCF($id)
         // $vcard->addPhoneNumber(123456789, 'WORK');
         // $vcard->addAddress(null, null, 'street', 'worktown', null, 'workpostcode', 'Belgium');
         $vcard->addAddress('FP One', 'Thamrin Nine Complex', 'Autograph Tower', '28th Floor', 'Jl. M.H Thamrin No. 10', '10230', 'Jakarta Pusat');
-        // $vcard->addLabel('street, worktown, workpostcode Belgium');
-        $vcard->addURL('http://www.accel365.id', 'PREF;My Website');
+        $vcard->addLabel('street, worktown, workpostcode Belgium');
+        $vcard->addURL('https://www.accel365.id');
         if ($data->photo_path) {
             $path = "storage/photos/ $data->photo_name";
             $path = preg_replace('/\s+/', '', $path);
