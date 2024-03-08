@@ -18,7 +18,7 @@ class RegistrationWR extends Component
     use WithFileUploads;
     public $is_add, $is_edit, $id;
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
-    public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams;
+    public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code;
 
 
 
@@ -42,6 +42,8 @@ class RegistrationWR extends Component
         $this->youtube = $data->youtube;
         $this->photo = $data->photo;
         $this->id = $id;
+        $this->code = $data->code;
+        $this->real_code = $data->code;
         $this->is_edit = true;
     }
 
@@ -76,7 +78,7 @@ class RegistrationWR extends Component
         $data->youtube = trim($this->youtube);
         $data->photo_name = $filename;
         $data->photo_path = $path;
-        $data->code = Str::toBase64($this->kode_agent);
+        $data->code = Str::toBase64(create_code());
         $data->link = 'https://link.accel365.id/Card/' . $data->code;
 
         // $this->photo->store(path: 'photos');
@@ -118,8 +120,10 @@ class RegistrationWR extends Component
             $data->photo_name = $filename;
             $data->photo_path = $path;
         }
-        $data->code = Str::toBase64($this->kode_agent);
-        $data->link = 'https://link.accel365.id/Card/' . $data->code;
+        if ($this->real_code != $this->code) {
+            $data->code = trim($this->code);
+            $data->link = 'https://link.accel365.id/Card/' . $data->code;
+        }
         $data->save();
         $this->generateVCF($data->id);
 
@@ -142,6 +146,7 @@ class RegistrationWR extends Component
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
         'photo' => 'mimes:jpg,png|max:1024|nullable',
+
 
     ];
 
