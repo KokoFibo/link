@@ -36,15 +36,17 @@
                      <th scope="col" class="px-6 py-3">
                          Youtube
                      </th>
-                     <th scope="col" class="px-6 py-3">
-                         Code
-                     </th>
-                     <th scope="col" class="px-6 py-3">
-                         Link
-                     </th>
-                     <th scope="col" class="px-6 py-3">
-                         QR Code
-                     </th>
+                     @if (auth()->user()->role > 2)
+                         <th scope="col" class="px-6 py-3">
+                             Code
+                         </th>
+                         <th scope="col" class="px-6 py-3">
+                             Link
+                         </th>
+                         <th scope="col" class="px-6 py-3">
+                             QR Code
+                         </th>
+                     @endif
                      <th scope="col" class="px-6 py-3">
                          Photo
                      </th>
@@ -93,20 +95,22 @@
                          <td class="px-4 py-2">
                              {{ $user->youtube }}
                          </td>
-                         <td class="px-4 py-2">
-                             {{ $user->code }}
-                         </td>
-                         <td class="px-4 py-2">
-                             <a href="{{ $user->link }}" target="_blank">{{ $user->link }}</a>
-                         </td>
-                         <td class="px-4 py-2">
-                             {{-- {!! QrCode::size(100)->generate(Request::url()) !!} --}}
-                             {{-- {{ QrCode::size(100)->generate('Anton') }} --}}
-                             @if ($user->link)
-                                 {{-- {{ QrCode::size(400)->merge('\public\images\logo.jpg', 0.3, false)->generate($user->link) }} --}}
-                                 {{ QrCode::size(50)->generate($user->link) }}
-                             @endif
-                         </td>
+                         @if (auth()->user()->role > 2)
+                             <td class="px-4 py-2">
+                                 {{ $user->code }}
+                             </td>
+                             <td class="px-4 py-2">
+                                 <a href="{{ $user->link }}" target="_blank">{{ $user->link }}</a>
+                             </td>
+                             <td class="px-4 py-2">
+                                 {{-- {!! QrCode::size(100)->generate(Request::url()) !!} --}}
+                                 {{-- {{ QrCode::size(100)->generate('Anton') }} --}}
+                                 @if ($user->link)
+                                     {{-- {{ QrCode::size(400)->merge('\public\images\logo.jpg', 0.3, false)->generate($user->link) }} --}}
+                                     {{ QrCode::size(50)->generate($user->link) }}
+                                 @endif
+                             </td>
+                         @endif
                          <td class="px-4 py-2">
                              @if ($user->photo_path)
                                  <div style="width: 50px;">
