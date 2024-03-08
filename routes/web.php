@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use App\Livewire\Link;
-use App\Livewire\RegistrationWR;
 use App\Livewire\UpdateData;
+use App\Livewire\RegistrationWR;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 
 Route::middleware(['auth'])->group(
     function () {
@@ -56,7 +58,8 @@ Route::get('/vcf/{code}', [UserController::class, 'vcf']);
 Route::get('/Card/{code}', [UserController::class, 'user']);
 
 
-Route::view('/', 'welcome');
+// Route::view('/', 'welcome');
+Route::redirect('/', 'login');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -65,7 +68,6 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
-
 
 
 
