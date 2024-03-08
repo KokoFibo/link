@@ -142,12 +142,14 @@
                         </a>
                     </div>
                     <div>
-                        @php
+                        {{-- @php
                             $arrNama = explode(' ', $data->name);
 
                             $nama_file = strtolower($arrNama[0]) . '-' . $data->kode_agent . '.vcf';
-                        @endphp
-                        <a href="{{ asset('storage/photos/' . $nama_file) }}" download>
+                        @endphp --}}
+                        {{-- <a href="{{ asset('storage/photos/' . $nama_file) }}" download> --}}
+
+                        <a href="{{ asset('storage/photos/' . nama_file($data->name, $data->kode_agent)) }}" download>
                             <span
                                 class="py-3 px-4 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
                                 Save Contact
@@ -242,7 +244,6 @@
                 <!-- Social Media -->
                 <div>
                     <h3 class="text-xl font-semibold m-4 text-gray-600">Social Media</h3>
-                    <p>{{ $data->facebook }}, {{ $data->instagram }}, {{ $data->tiktok }}, {{ $data->youtube }}</p>
                     {{-- instagram --}}
                     @if ($data->instagram)
                         <div class="flex justify-between m-3 py-3 px-6 border-2 rounded-xl items-center">

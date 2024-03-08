@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'code' => Str::toBase64(fake()->randomNumber(7, true)),
             'password' => Hash::make('Anton888'),
+            'role' => 3
         ]);
 
         \App\Models\User::factory(30)->create();
