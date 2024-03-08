@@ -32,7 +32,6 @@ class RegistrationWR extends Component
 
     public function cancel()
     {
-        dd('ok');
 
         $this->is_edit = false;
         $this->is_add = false;
