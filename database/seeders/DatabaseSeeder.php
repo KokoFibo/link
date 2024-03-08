@@ -34,6 +34,6 @@ class DatabaseSeeder extends Seeder
             'role' => 2
         ]);
 
-        // \App\Models\User::factory(30)->create();
+        \App\Models\User::factory(30)->create();
     }
 }

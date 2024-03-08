@@ -148,6 +148,7 @@ class RegistrationWR extends Component
         }
         $data->save();
         generateVCF($data->id);
+        $this->dispatch('success', message: 'Data updated');
 
         $this->is_edit = false;
         $this->form_open = false;
