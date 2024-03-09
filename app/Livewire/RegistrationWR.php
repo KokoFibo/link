@@ -19,7 +19,7 @@ class RegistrationWR extends Component
     use WithFileUploads;
     public $is_add, $is_edit, $id;
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
-    public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code, $form_open;
+    public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code, $form_open, $role;
 
 
     public function addNew()
@@ -59,6 +59,7 @@ class RegistrationWR extends Component
         $this->tiktok = $data->tiktok;
         $this->youtube = $data->youtube;
         $this->photo = $data->photo;
+        $this->role = $data->role;
         $this->id = $id;
         $this->code = $data->code;
         $this->real_code = $data->code;
@@ -137,6 +138,7 @@ class RegistrationWR extends Component
         $data->facebook = trim($this->facebook);
         $data->tiktok = trim($this->tiktok);
         $data->youtube = trim($this->youtube);
+        $data->role = $this->role;
         if ($this->photo) {
             $data->photo_name = $filename;
             $data->photo_path = $path;

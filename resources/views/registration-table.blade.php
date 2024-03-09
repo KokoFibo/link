@@ -9,6 +9,12 @@
                      <th scope="col" class="px-6 py-3">
                          Name
                      </th>
+                     @if (auth()->user()->role > 2)
+                         <th scope="col" class="px-6 py-3">
+                             Role
+                         </th>
+                     @endif
+
                      <th scope="col" class="px-6 py-3">
                          Title
                      </th>
@@ -69,6 +75,11 @@
                          <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                              {{ $user->name }}
                          </th>
+                         @if (auth()->user()->role > 2)
+                             <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                 {{ roleName($user->role) }}
+                             </th>
+                         @endif
                          <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                              {{ $user->title }}
                          </th>
