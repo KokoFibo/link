@@ -166,7 +166,7 @@
                      </div>
 
                      {{-- Code --}}
-                     @if (auth()->user()->role > 1)
+                     @if (auth()->user()->role > 1 && $is_edit)
                          <div class="relative z-0 w-full mb-5 group">
                              <input wire:model.live="code" type="text" name="floating_code" id="floating_code"
                                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -178,6 +178,20 @@
                                      {{ $message }}
                                  @enderror
                              </span>
+                         </div>
+                     @endif
+                     @if (auth()->user()->role > 2 && $is_edit)
+                         {{-- <form class="max-w-sm mx-auto"> --}}
+                         <div class="relative z-0 w-full mb-5 group">
+                             <label for="underline_select" class="sr-only">Underline select</label>
+                             <select id="underline_select" wire:model.live="role"
+                                 class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                                 <option value=" ">Choose a role</option>
+                                 <option value="1">User</option>
+                                 <option value="2">Admin</option>
+                                 <option value="3">Super Admin</option>
+                                 <option value="4">Developer</option>
+                             </select>
                          </div>
                      @endif
 

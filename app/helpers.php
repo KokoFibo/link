@@ -6,6 +6,26 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use JeroenDesloovere\VCard\VCard;
 
+function roleName($role)
+{
+    $roleName = "";
+    switch ($role) {
+        case 1:
+            $roleName = 'User';
+            break;
+        case 2:
+            $roleName = 'Admin';
+            break;
+        case 3:
+            $roleName = 'Super Admin';
+            break;
+        case 4:
+            $roleName = 'Developer';
+            break;
+    }
+    return  $roleName;
+}
+
 function getLink($id)
 {
     $data = User::find($id);
