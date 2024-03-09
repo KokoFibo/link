@@ -1,11 +1,11 @@
 {
-    "name": "Laravel Package Tutorial",
-    "short_name": "LPT",
+    "name": "Accel 365",
+    "short_name": "Accel365",
     "start_url": "http://127.0.0.1:8000/Card/anton",
-    "background_color": "#6777ef",
-    "description": "Tutorial of Laravel Package",
+    "background_color": "#212529",
+    "description": "Accel 365",
     "display": "fullscreen",
-    "theme_color": "#6777ef",
+    "theme_color": "#212529",
     "icons": [
         {
             "src": "logoaccel365.PNG",
