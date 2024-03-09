@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use JeroenDesloovere\VCard\VCard;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -84,9 +86,29 @@ class UserController extends Controller
 
     public function user($code)
     {
-        // dd(auth()->user()->id);
-        // $data = User::find(auth()->user()->id);
         $data = User::where('code', $code)->first();
+        $currentURL = url()->full();
+
+        $myurl = url("/Card/{$data->code}");
+
+        $data1 = [
+            "name" => "Laravel Package Tutorial",
+            "short_name" => "LPT",
+            "start_url" => $myurl,
+            "background_color" => "#6777ef",
+            "description" => "Tutorial of Laravel Package",
+            "display" => "fullscreen",
+            "theme_color" => "#6777ef",
+            "icons" => [
+                [
+                    "src" => "logoaccel365.PNG",
+                    "sizes" => "512x512",
+                    "type" => "image/png",
+                    "purpose" => "any maskable"
+                ]
+            ]
+        ];
+        Storage::disk('public1')->put('manifest.json', json_encode($data1));
 
         return view('link', [
             'data' => $data
