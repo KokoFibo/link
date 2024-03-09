@@ -47,9 +47,9 @@
                              Code
                          </th>
 
-                         <th scope="col" class="px-6 py-3">
+                         {{-- <th scope="col" class="px-6 py-3">
                              QR Code
-                         </th>
+                         </th> --}}
                      @endif
                      <th scope="col" class="px-6 py-3">
                          Link
@@ -112,14 +112,11 @@
                                  {{ $user->code }}
                              </td>
 
-                             <td class="px-4 py-2">
-                                 {{-- {!! QrCode::size(100)->generate(Request::url()) !!} --}}
-                                 {{-- {{ QrCode::size(100)->generate('Anton') }} --}}
+                             {{-- <td class="px-4 py-2">
                                  @if ($user->link)
-                                     {{-- {{ QrCode::size(400)->merge('\public\images\logo.jpg', 0.3, false)->generate($user->link) }} --}}
                                      {{ QrCode::size(50)->generate($user->link) }}
                                  @endif
-                             </td>
+                             </td> --}}
                          @endif
                          <td class="px-4 py-2">
                              <a href="{{ $user->link }}" target="_blank">{{ $user->link }}</a>
