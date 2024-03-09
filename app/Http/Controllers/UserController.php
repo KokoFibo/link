@@ -92,13 +92,13 @@ class UserController extends Controller
         $myurl = url("/Card/{$data->code}");
 
         $data1 = [
-            "name" => "Laravel Package Tutorial",
-            "short_name" => "LPT",
+            "name" => "Accel 365",
+            "short_name" => "Accel365",
             "start_url" => $myurl,
-            "background_color" => "#6777ef",
-            "description" => "Tutorial of Laravel Package",
+            "background_color" => "#212529",
+            "description" => "Accel 365",
             "display" => "fullscreen",
-            "theme_color" => "#6777ef",
+            "theme_color" => "#212529",
             "icons" => [
                 [
                     "src" => "logoaccel365.PNG",
