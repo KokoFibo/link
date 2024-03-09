@@ -109,7 +109,7 @@ class UserController extends Controller
                 ]
             ]
         ];
-        Storage::disk('public1')->put('manifest.json', json_encode($data1));
+        Storage::disk('public1')->put('manifest.json', json_encode($data1, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 
         return view('link', [
             'data' => $data
