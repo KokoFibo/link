@@ -90,6 +90,7 @@ class UserController extends Controller
         $currentURL = url()->full();
 
         $myurl = url("/Card/{$data->code}");
+        dd($myurl);
 
         $data1 = [
             "name" => "Laravel Package Tutorial",
