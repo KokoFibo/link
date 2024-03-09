@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(
 // Route::get('/registration', RegistrationWR::class)->name('registration');
 Route::get('/link', Link::class)->name('link');
 Route::get('/vcf/{code}', [UserController::class, 'vcf']);
-Route::get('/Card/{code}', [UserController::class, 'user']);
+Route::get('/Card/{code}', [UserController::class, 'user'])->name('cardcode');
 
 
 // Route::view('/', 'welcome');

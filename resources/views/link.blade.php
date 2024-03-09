@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('content')
-    <title>{{ $data->name }}</title>
+    <title>Accel365</title>
     <div class="lg:w-1/3 w-full mx-auto">
         @if ($data != null)
             <main>
