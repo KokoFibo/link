@@ -1,0 +1,17 @@
+{
+    "name": "Excel 365",
+    "short_name": "Accel365",
+    "start_url": "/index.php",
+    "background_color": "#6777ef",
+    "description": "Excel 365 DBC",
+    "display": "fullscreen",
+    "theme_color": "#6777ef",
+    "icons": [
+        {
+            "src": "Accel365Icon.PNG",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
