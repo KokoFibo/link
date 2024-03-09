@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- PWA  --}}
+    <!-- PWA  -->
+    <meta name="theme-color" content="#6777ef" />
+    <link rel="apple-touch-icon" href="{{ asset('Accel365Icon.png') }}">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+
     <title>{{ config('app.name', 'Accel365') }}</title>
 
     {{-- PWA --}}
@@ -59,7 +65,9 @@
         </main>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
     <script src="{{ asset('/sw.js') }}"></script>
+
     <script>
         if ("serviceWorker" in navigator) {
             // Register a service worker hosted at the root of the
