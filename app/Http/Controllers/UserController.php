@@ -105,6 +105,7 @@ class UserController extends Controller
                     "sizes" => "512x512",
                     "type" => "image/png",
                     "purpose" => "any maskable"
+
                 ]
             ]
         ];
