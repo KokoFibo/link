@@ -88,28 +88,27 @@
 
                 <!-- picture profile -->
 
-                <div class=" flex  -mt-7  p-3 w-full justify-between items-end">
-                    <div class="flex items-end gap-3">
-                        <div class="profile-picture">
-                            @if ($data->photo_path)
-                                <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 75px"
-                                    class="rounded-full" />
-                            @else
-                                <img src="{{ url('/images/pp.png') }}" alt="" style="width: 75px"
-                                    class="rounded-full" />
-                            @endif
-                        </div>
-                        <div class="name-title">
-                            <h5 class="font-semibold text-xl text-gray-700">{{ $data->name }}</h5>
-                            <h5 class="font-semibold text-sm text-gray-500">
-                                {{ $data->title }}
-                            </h5>
-                        </div>
+                <div class="flex items-center  justify-between p-3">
+                    {{-- <div class="flex items-center gap-3"> --}}
+                    <div class="profile-picture style=" style="width: 100px">
+                        @if ($data->photo_path)
+                            <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 60px"
+                                class="rounded-full" />
+                        @else
+                            <img src="{{ url('/images/pp.png') }}" alt="" style="width: 60px"
+                                class="rounded-full" />
+                        @endif
                     </div>
-
+                    <div class="name-title ">
+                        <h5 class="font-semibold text-2xl text-gray-700">{{ $data->name }}</h5>
+                        <h5 class="font-semibold text-sm text-gray-500">
+                            {{ $data->title }}
+                        </h5>
+                    </div>
+                    {{-- </div> --}}
                     <div class="barcode">
                         <button data-modal-target="static-modal" data-modal-toggle="static-modal">
-                            <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 50px"
+                            <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 60px"
                                 class="rounded-2xl border-2 p-1" />
                         </button>
                     </div>
@@ -152,10 +151,15 @@
                         {{-- <a href="{{ asset('storage/photos/' . $nama_file) }}" download> --}}
 
                         <a href="{{ asset('storage/photos/' . nama_file($data->name, $data->kode_agent)) }}" download>
-                            <span
+                            {{-- <span
                                 class="py-3 px-4 shadow-md no-underline rounded-full bg-blue-600 text-white text-sm border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
+                                Save Contacts
+                            </span> --}}
+
+                            <button
+                                class="py-3 px-4 shadow-md no-underline rounded-full bg-blue-600 text-white text-xs border-blue btn-primary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">
                                 Save Contact
-                            </span>
+                            </button>
                         </a>
                         {{-- <a href="/vcf/{{ $data->code }}">
                             <button
