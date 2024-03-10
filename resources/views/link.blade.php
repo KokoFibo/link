@@ -90,21 +90,24 @@
 
                 <div class="flex items-center  justify-between p-3">
                     {{-- <div class="flex items-center gap-3"> --}}
-                    <div class="profile-picture style=" style="width: 100px">
-                        @if ($data->photo_path)
-                            <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 60px"
-                                class="rounded-full" />
-                        @else
-                            <img src="{{ url('/images/pp.png') }}" alt="" style="width: 60px"
-                                class="rounded-full" />
-                        @endif
+                    <div class="flex gap-2 items-center">
+                        <div class="profile-picture" style="width: 75px">
+                            @if ($data->photo_path)
+                                <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 60px"
+                                    class="rounded-full" />
+                            @else
+                                <img src="{{ url('/images/pp.png') }}" alt="" style="width: 60px"
+                                    class="rounded-full" />
+                            @endif
+                        </div>
+                        <div class="name-title ">
+                            <h5 class="font-semibold text-2xl text-gray-700">{{ $data->name }}</h5>
+                            <h5 class="font-semibold text-sm text-gray-500">
+                                {{ $data->title }}
+                            </h5>
+                        </div>
                     </div>
-                    <div class="name-title ">
-                        <h5 class="font-semibold text-2xl text-gray-700">{{ $data->name }}</h5>
-                        <h5 class="font-semibold text-sm text-gray-500">
-                            {{ $data->title }}
-                        </h5>
-                    </div>
+
                     {{-- </div> --}}
                     <div class="barcode">
                         <button data-modal-target="static-modal" data-modal-toggle="static-modal">
