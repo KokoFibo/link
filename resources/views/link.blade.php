@@ -111,7 +111,7 @@
                     {{-- </div> --}}
                     <div class="barcode">
                         <button data-modal-target="static-modal" data-modal-toggle="static-modal">
-                            <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 60px"
+                            <img src="{{ url('/images/barcode.png') }}" alt="" style="width: 50px"
                                 class="rounded-2xl border-2 p-1" />
                         </button>
                     </div>
