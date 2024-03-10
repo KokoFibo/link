@@ -93,10 +93,10 @@
                     <div class="flex gap-2 items-center">
                         <div class="profile-picture" style="width: 75px">
                             @if ($data->photo_path)
-                                <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 60px"
+                                <img src="{{ asset('storage/' . $data->photo_path) }}" alt="" style="width: 75px"
                                     class="rounded-full" />
                             @else
-                                <img src="{{ url('/images/pp.png') }}" alt="" style="width: 60px"
+                                <img src="{{ url('/images/pp.png') }}" alt="" style="width: 75px"
                                     class="rounded-full" />
                             @endif
                         </div>
