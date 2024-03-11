@@ -49,4 +49,3 @@
 
     @livewireScripts
 </body>
-< /html>
