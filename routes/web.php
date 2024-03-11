@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(
                 Route::get('/vcf/{code}', [UserController::class, 'vcf']);
                 Route::get('/update', UpdateData::class)->name('update');
 
+
                 Route::middleware(['Admin'])->group(
                     function () {
 
@@ -54,9 +55,7 @@ Route::middleware(['auth'])->group(
 
 
 // Route::get('/registration', RegistrationWR::class)->name('registration');
-Route::get('/link', Link::class)->name('link');
-Route::get('/vcf/{code}', [UserController::class, 'vcf']);
-Route::get('/Card/{code}', [UserController::class, 'user']);
+
 
 Route::get('/rubah', function () {
     for ($i = 1; $i < 15; $i++) {
@@ -85,6 +84,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 
+Route::get('/Card/{code}', [UserController::class, 'user']);
 
 
 
