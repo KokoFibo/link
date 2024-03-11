@@ -181,7 +181,7 @@ class RegistrationWR extends Component
     protected $rules = [
         'name' => 'required',
         'title' => 'nullable',
-        'email' => 'required',
+        'email' => 'required|email',
         'kode_agent' => 'nullable|numeric',
         'description' => 'nullable',
         'clients' => 'nullable',
@@ -193,6 +193,11 @@ class RegistrationWR extends Component
         'facebook' => 'nullable',
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
+        'office' => 'nullable|max:15',
+        'address_1' => 'nullable|max:30',
+        'address_2' => 'nullable|max:30',
+        'address_3' => 'nullable|max:30',
+        'address_4' => 'nullable|max:30',
         'photo' => 'mimes:jpg,png|max:1024|nullable',
         // 'photo' => 'image|max:1024|nullable',
 
