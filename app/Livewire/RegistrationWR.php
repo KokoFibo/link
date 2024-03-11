@@ -193,7 +193,7 @@ class RegistrationWR extends Component
         'facebook' => 'nullable',
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
-        'office' => 'nullable|max:15',
+        'office' => 'nullable|max:25',
         'address_1' => 'nullable|max:30',
         'address_2' => 'nullable|max:30',
         'address_3' => 'nullable|max:30',
