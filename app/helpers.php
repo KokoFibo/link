@@ -81,7 +81,7 @@ function generateVCF($id)
         $vcard->addPhoneNumber($data->mobile, 'PREF;WORK');
         // $vcard->addPhoneNumber(123456789, 'WORK');
         // $vcard->addAddress(null, null, 'street', 'worktown', null, 'workpostcode', 'Belgium');
-        $vcard->addAddress('FP One', 'Thamrin Nine Complex', 'Autograph Tower', '28th Floor', 'Jl. M.H Thamrin No. 10', '10230', 'Jakarta Pusat');
+        // $vcard->addAddress('FP One', 'Thamrin Nine Complex', 'Autograph Tower', '28th Floor', 'Jl. M.H Thamrin No. 10', '10230', 'Jakarta Pusat');
         $vcard->addAddress($data->office, null, $data->address_1, $data->address_2, $data->address_3, $data->address_4, null);
         // $vcard->addLabel('street, worktown, workpostcode Belgium');
         $vcard->addURL('https://www.accel365.id');
