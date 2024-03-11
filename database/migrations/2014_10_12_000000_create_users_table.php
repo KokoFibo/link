@@ -34,6 +34,11 @@ return new class extends Migration
             $table->string('code')->nullable();
             $table->string('link')->nullable();
             $table->integer('role')->default(1);
+            $table->string('office')->nullable();
+            $table->string('address_1')->nullable();
+            $table->string('address_2')->nullable();
+            $table->string('address_3')->nullable();
+            $table->string('address_4')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

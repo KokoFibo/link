@@ -20,13 +20,18 @@ class RegistrationWR extends Component
     public $is_add, $is_edit, $id;
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
     public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code, $form_open, $role;
-
+    public $office, $address_1, $address_2, $address_3, $address_4;
 
     public function addNew()
     {
 
         $this->reset();
         $this->is_add = true;
+        $this->office = 'FP One';
+        $this->address_1 = 'Thamrin Nine Complex';
+        $this->address_2 = 'Autograph Tower 28th Floor';
+        $this->address_3 = 'Jl. M.H Thamrin No. 10';
+        $this->address_4 = 'Jakarta Pusat - 10230';
         $this->form_open = true;
     }
 
@@ -65,6 +70,11 @@ class RegistrationWR extends Component
         $this->real_code = $data->code;
         $this->is_edit = true;
         $this->form_open = true;
+        $this->office = $data->office;
+        $this->address_1 = $data->address_1;
+        $this->address_2 = $data->address_2;
+        $this->address_3 = $data->address_3;
+        $this->address_4 = $data->address_4;
     }
 
     public function save()
@@ -88,6 +98,12 @@ class RegistrationWR extends Component
         $data->clients = $this->clients;
         $data->claims = $this->claims;
         $data->teams = $this->teams;
+        $data->office = $this->office;
+        $data->address_1 = $this->address_1;
+        $data->address_2 = $this->address_2;
+        $data->address_3 = $this->address_3;
+        $data->address_4 = $this->address_4;
+
 
 
         $data->mobile = trim($this->mobile);
@@ -139,6 +155,13 @@ class RegistrationWR extends Component
         $data->tiktok = trim($this->tiktok);
         $data->youtube = trim($this->youtube);
         $data->role = $this->role;
+
+        $data->office = $this->office;
+        $data->address_1 = $this->address_1;
+        $data->address_2 = $this->address_2;
+        $data->address_3 = $this->address_3;
+        $data->address_4 = $this->address_4;
+
         if ($this->photo) {
             $data->photo_name = $filename;
             $data->photo_path = $path;
