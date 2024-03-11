@@ -124,6 +124,7 @@ class RegistrationWR extends Component
         generateVCF($data->id);
         $this->is_add = false;
         $this->form_open = false;
+        $this->dispatch('success', message: 'Data Saved');
 
         $this->reset();
     }
