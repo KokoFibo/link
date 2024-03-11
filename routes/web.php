@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Livewire\Link;
 use App\Livewire\UpdateData;
 use App\Livewire\RegistrationWR;
@@ -56,6 +57,20 @@ Route::middleware(['auth'])->group(
 Route::get('/link', Link::class)->name('link');
 Route::get('/vcf/{code}', [UserController::class, 'vcf']);
 Route::get('/Card/{code}', [UserController::class, 'user']);
+
+Route::get('/rubah', function () {
+    for ($i = 1; $i < 15; $i++) {
+
+        User::where('id', $i)
+            ->update([
+                'office' => 'FP One',
+                'address_1' => 'Thamrin Nine Complex',
+                'address_2' => 'Autograph Tower 28th Floor',
+                'address_3' => 'Jl. M.H Thamrin No. 10',
+                'address_4' => 'Jakarta Pusat - 10230',
+            ]);
+    }
+});
 
 
 // Route::view('/', 'welcome');

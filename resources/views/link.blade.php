@@ -5,20 +5,6 @@
     <div class="lg:w-1/3 w-full mx-auto">
         @if ($data != null)
             <main>
-                {{-- <div x-show="open" class=" flex justify-center items-center"> --}}
-                {{-- <div class="flex flex-col  items-center">
-
-                        <div class="bg-green-600 w-full h-screen">
-                            <div class="rounded-2xl border-2 p-1">
-                                {{ QrCode::size(300)->eye('circle')->generate($data->link) }}
-                            </div>
-                        </div>
-                        <button class="bg-black text-white px-4 py-2 rounded shadow" @click="open=false">Close</button>
-                    </div> --}}
-
-
-
-
                 <!-- Main modal -->
                 <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -75,19 +61,12 @@
                     </div>
                 </div>
 
-
-
-
-
-
-
                 <!-- Background Picture -->
                 <div>
                     <img src="{{ url('/images/bg.png') }}" alt="" class=" w-full" style=" height: 410px" />
                 </div>
 
                 <!-- picture profile -->
-
                 <div class="flex items-center  justify-between p-3">
                     {{-- <div class="flex items-center gap-3"> --}}
                     <div class="flex gap-2 items-center">
@@ -116,8 +95,6 @@
                         </button>
                     </div>
                 </div>
-
-
 
                 <!-- button whatsapp -->
                 <div class="flex justify-between items-center p-4">
@@ -238,18 +215,20 @@
                                 style="width: 50px; height: 50px">
                                 <i class="fa-regular fa-building"></i>
                             </div>
+                            {{-- Address --}}
                             <div>
                                 <div>Office</div>
-                                <div class="text-lg font-semibold">FPOne</div>
-                                <div>Thamrin Nine Complex</div>
-                                <div>Autograph Tower 28th Floor</div>
-                                <div>Jl. M.H Thamrin No. 10</div>
+                                <div class="text-lg font-semibold">{{ $data->office }}</div>
+                                <div>{{ $data->address_1 }}</div>
+                                <div>{{ $data->address_2 }}</div>
+                                <div>{{ $data->address_3 }}</div>
+                                <div>{{ $data->address_4 }}</div>
 
-                                <div>Jakarta Pusat - 10230</div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!-- Social Media -->
                 <div>
                     <h3 class="text-xl font-semibold m-4 text-gray-600">Social Media</h3>
@@ -334,6 +313,7 @@
                     @endif
 
                 </div>
+
                 <!-- get in touch -->
                 <div>
                     <h3 class="text-xl font-semibold m-4 text-gray-600">Get in touch</h3>

@@ -1,7 +1,7 @@
 {
     "name": "Accel 365",
     "short_name": "Accel365",
-    "start_url": "http://127.0.0.1:8000/Card/anton",
+    "start_url": "http://127.0.0.1:8000/Card/jean",
     "background_color": "#212529",
     "description": "Accel 365",
     "display": "fullscreen",
