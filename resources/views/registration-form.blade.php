@@ -1,8 +1,8 @@
 <div class="my-10">
 
     <div
-        class="block  w-full lg:w-1/2 mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <div class="mx-auto ">
+        class="block  w-full lg:w-1/3 mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="max-w-lg mx-auto ">
             {{-- name --}}
             <div class="mt-5 relative z-0 w-full mb-5 group">
                 <input wire:model.live="name" type="text" name="floating_name" id="floating_name"
