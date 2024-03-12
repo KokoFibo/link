@@ -87,32 +87,38 @@ class UserController extends Controller
     public function user($code)
     {
         $data = User::where('code', $code)->first();
-        $currentURL = url()->full();
+        if ($data != null) {
 
-        $myurl = url("/Card/{$data->code}");
 
-        $data1 = [
-            "name" => "Accel 365",
-            "short_name" => "Accel365",
-            "start_url" => $myurl,
-            "background_color" => "#212529",
-            "description" => "Accel 365",
-            "display" => "fullscreen",
-            "theme_color" => "#212529",
-            "icons" => [
-                [
-                    "src" => "logoaccel365.PNG",
-                    "sizes" => "512x512",
-                    "type" => "image/png",
-                    "purpose" => "any maskable"
+            $currentURL = url()->full();
 
+            $myurl = url("/Card/{$data->code}");
+
+            $data1 = [
+                "name" => "Accel 365",
+                "short_name" => "Accel365",
+                "start_url" => $myurl,
+                "background_color" => "#212529",
+                "description" => "Accel 365",
+                "display" => "fullscreen",
+                "theme_color" => "#212529",
+                "icons" => [
+                    [
+                        "src" => "logoaccel365.PNG",
+                        "sizes" => "512x512",
+                        "type" => "image/png",
+                        "purpose" => "any maskable"
+
+                    ]
                 ]
-            ]
-        ];
-        Storage::disk('public1')->put('manifest.json', json_encode($data1, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+            ];
+            Storage::disk('public1')->put('manifest.json', json_encode($data1, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 
-        return view('link', [
-            'data' => $data
-        ]);
+            return view('link', [
+                'data' => $data
+            ]);
+        } else {
+            return view('file-not-found-page');
+        }
     }
 }
