@@ -12,6 +12,8 @@ class UpdateData extends Component
     public $is_add, $is_edit, $id;
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
     public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code;
+    public $office, $address_1, $address_2, $address_3, $address_4;
+
 
     public function back()
     {
@@ -33,6 +35,11 @@ class UpdateData extends Component
         'facebook' => 'nullable',
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
+        'office' => 'nullable|max:25',
+        'address_1' => 'nullable|max:30',
+        'address_2' => 'nullable|max:30',
+        'address_3' => 'nullable|max:30',
+        'address_4' => 'nullable|max:30',
         'photo' => 'mimes:jpg,png|max:1024|nullable',
 
 
@@ -59,6 +66,11 @@ class UpdateData extends Component
         $this->id = $data->id;
         $this->code = $data->code;
         $this->real_code = $data->code;
+        $this->office = $data->office;
+        $this->address_1 = $data->address_1;
+        $this->address_2 = $data->address_2;
+        $this->address_3 = $data->address_3;
+        $this->address_4 = $data->address_4;
         $this->is_edit = true;
     }
 
@@ -81,6 +93,13 @@ class UpdateData extends Component
         $data->clients = $this->clients;
         $data->claims = $this->claims;
         $data->teams = $this->teams;
+
+
+        $data->office = $this->office;
+        $data->address_1 = $this->address_1;
+        $data->address_2 = $this->address_2;
+        $data->address_3 = $this->address_3;
+        $data->address_4 = $this->address_4;
 
         $data->mobile = trim($this->mobile);
         $data->whatsapp = trim($this->whatsapp);
