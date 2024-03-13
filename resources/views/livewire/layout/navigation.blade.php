@@ -142,9 +142,9 @@ new class extends Component {
                 <x-responsive-nav-link :href="route('profile')" wire:navigate>
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('registration')" wire:navigate>
-                    {{ __('Registration') }}
-                </x-responsive-nav-link>
+                {{-- <x-responsive-nav-link :href="route('registration')" wire:navigate>
+                    {{ __('Registrations') }}
+                </x-responsive-nav-link> --}}
 
                 <!-- Authentication -->
                 <button wire:click="logout" class="w-full text-start">
