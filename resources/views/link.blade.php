@@ -168,7 +168,9 @@
 
                 <!-- About me -->
                 <div class="m-4 text-gray-600">
-                    <p>{{ $data->description }}</p>
+                    @foreach (split_text($data->description) as $d)
+                        <p>{{ trim($d) }}</p>
+                    @endforeach
                 </div>
 
                 <!-- Profile -->

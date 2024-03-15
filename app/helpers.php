@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use JeroenDesloovere\VCard\VCard;
 
+function split_text($text)
+{
+    $data = explode('/br', $text);
+    return $data;
+}
+
 function roleName($role)
 {
     $roleName = "";
