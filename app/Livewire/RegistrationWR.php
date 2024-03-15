@@ -21,6 +21,13 @@ class RegistrationWR extends Component
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
     public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code, $form_open, $role;
     public $office, $address_1, $address_2, $address_3, $address_4;
+    public $office_location;
+    public $office_location_default = 'https://maps.app.goo.gl/FU5Y65VWziBBwmWU8';
+
+    public function default_location()
+    {
+        $this->office_location = $this->office_location_default;
+    }
 
     public function addNew()
     {
@@ -32,6 +39,8 @@ class RegistrationWR extends Component
         $this->address_2 = 'Autograph Tower 28th Floor';
         $this->address_3 = 'Jl. M.H Thamrin No. 10';
         $this->address_4 = 'Jakarta Pusat - 10230';
+        $this->office_location = $this->office_location_default;
+
         $this->form_open = true;
     }
 
@@ -71,6 +80,7 @@ class RegistrationWR extends Component
         $this->is_edit = true;
         $this->form_open = true;
         $this->office = $data->office;
+        $this->office_location = $data->office_location;
         $this->address_1 = $data->address_1;
         $this->address_2 = $data->address_2;
         $this->address_3 = $data->address_3;
@@ -99,6 +109,7 @@ class RegistrationWR extends Component
         $data->claims = $this->claims;
         $data->teams = $this->teams;
         $data->office = $this->office;
+        $data->office_location = $this->office_location;
         $data->address_1 = $this->address_1;
         $data->address_2 = $this->address_2;
         $data->address_3 = $this->address_3;
@@ -158,6 +169,7 @@ class RegistrationWR extends Component
         $data->role = $this->role;
 
         $data->office = $this->office;
+        $data->office_location = $this->office_location;
         $data->address_1 = $this->address_1;
         $data->address_2 = $this->address_2;
         $data->address_3 = $this->address_3;
@@ -195,6 +207,7 @@ class RegistrationWR extends Component
         'tiktok' => 'nullable',
         'youtube' => 'nullable',
         'office' => 'nullable|max:25',
+        'office_location' => 'nullable',
         'address_1' => 'nullable|max:30',
         'address_2' => 'nullable|max:30',
         'address_3' => 'nullable|max:30',
@@ -240,6 +253,7 @@ class RegistrationWR extends Component
         $this->tiktok = '';
         $this->youtube = '';
         $this->photo = '';
+        $this->office_location = '';
     }
 
 

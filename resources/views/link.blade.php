@@ -116,7 +116,7 @@
                                 <i class="fa-regular fa-envelope"></i>
                             </button>
                         </a>
-                        <a href="https://maps.app.goo.gl/FU5Y65VWziBBwmWU8" target="_blank">
+                        <a href="{{ $data->office_location }}" target="_blank">
                             <button style="width: 45px; height: 45px" class="bg-teal-100 text-teal-500 rounded-lg">
                                 <i class="fa-solid fa-location-dot"></i>
                             </button>
