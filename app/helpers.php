@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use JeroenDesloovere\VCard\VCard;
 
-function split_text($text)
+function split_text($text, $splitter)
 {
-    $data = explode('/br', $text);
+    $data = explode($splitter, $text);
     return $data;
 }
 
