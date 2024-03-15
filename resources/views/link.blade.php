@@ -168,8 +168,16 @@
 
                 <!-- About me -->
                 <div class="m-4 text-gray-600">
-                    @foreach (split_text($data->description) as $d)
-                        <p>{{ trim($d) }}</p>
+                    @foreach (split_text($data->description, '/pr') as $d)
+                        @if (str_contains($d, '/ln'))
+                            @foreach (split_text($d, '/ln') as $p)
+                                <p>{{ $p }}</p>
+                            @endforeach
+                            <br>
+                        @else
+                            <p>{{ $d }}</p>
+                            <br>
+                        @endif
                     @endforeach
                 </div>
 
