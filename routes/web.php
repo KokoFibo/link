@@ -7,6 +7,7 @@ use App\Livewire\RegistrationWR;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Livewire\Test;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::middleware(['auth'])->group(
 
                                 Route::middleware(['SuperAdmin'])->group(
                                     function () {
+                                        Route::get('/test', Test::class);
                                     }
                                 );
                             }
