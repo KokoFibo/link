@@ -13,6 +13,13 @@ class UpdateData extends Component
     public $name, $title, $email, $kode_agent, $mobile, $whatsapp;
     public $instagram, $facebook, $tiktok, $youtube, $photo, $description, $clients, $claims, $teams, $real_code, $code;
     public $office, $address_1, $address_2, $address_3, $address_4;
+    public $office_location;
+    public $office_location_default = 'https://maps.app.goo.gl/FU5Y65VWziBBwmWU8';
+
+    public function default_location()
+    {
+        $this->office_location = $this->office_location_default;
+    }
 
 
     public function back()
@@ -40,6 +47,7 @@ class UpdateData extends Component
         'address_2' => 'nullable|max:30',
         'address_3' => 'nullable|max:30',
         'address_4' => 'nullable|max:30',
+        'office_location' => 'nullable',
         'photo' => 'mimes:jpg,png|max:1024|nullable',
 
 
@@ -71,6 +79,7 @@ class UpdateData extends Component
         $this->address_2 = $data->address_2;
         $this->address_3 = $data->address_3;
         $this->address_4 = $data->address_4;
+        $this->office_location = $data->office_location;
         $this->is_edit = true;
     }
 
@@ -100,6 +109,7 @@ class UpdateData extends Component
         $data->address_2 = $this->address_2;
         $data->address_3 = $this->address_3;
         $data->address_4 = $this->address_4;
+        $data->office_location = $this->office_location;
 
         $data->mobile = trim($this->mobile);
         $data->whatsapp = trim($this->whatsapp);
