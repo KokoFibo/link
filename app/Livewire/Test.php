@@ -15,13 +15,13 @@ class Test extends Component
     public function render()
     {
 
-        $data = User::all();
-        foreach ($data as $d) {
-            $rubah = User::find($d->id);
-            $rubah->office_location =
-                'https://maps.app.goo.gl/FU5Y65VWziBBwmWU8';
-            $rubah->save();
-        }
+        // $data = User::all();
+        // foreach ($data as $d) {
+        //     $rubah = User::find($d->id);
+        //     $rubah->office_location =
+        //         'https://maps.app.goo.gl/FU5Y65VWziBBwmWU8';
+        //     $rubah->save();
+        // }
 
 
         return view('livewire.test');
