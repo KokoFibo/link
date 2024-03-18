@@ -27,7 +27,7 @@ new class extends Component {
                     <a href="{{ route('dashboard') }}">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
 
-                        <img src="{{ asset('images/logo.jpg') }}" alt="" style="width: 100px"
+                        <img src="{{ asset('images/logoAccel365polos.png') }}" alt="" style="width: 100px"
                             class="block h-9 w-auto fill-current text-gray-800>
                       
                     </a>
