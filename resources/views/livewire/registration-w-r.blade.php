@@ -3,9 +3,13 @@
     {{-- <x-navbar></x-navbar> --}}
     {{-- <livewire:NavbarMenu /> --}}
     <x-app-layout>
-
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+                {{ __('Registration') }}
+            </h2>
+        </x-slot>
         <div class="text-gray-600">
-            <h1 class="text-3xl font-semibold text-center mt-5">Registration</h1>
+
 
 
             {{-- Add Data --}}
