@@ -2,8 +2,12 @@
     {{-- <title>Registration</title> --}}
     {{-- <livewire:NavbarMenu /> --}}
     <x-app-layout>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+                {{ __('Update Data') }}
+            </h2>
+        </x-slot>
         <main class="text-gray-600">
-            <h1 class="text-3xl font-semibold text-center mt-5">Update Data</h1>
             @include('registration-form-update-for-user')
         </main>
         <script>
