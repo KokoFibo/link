@@ -7,7 +7,7 @@
                 {{ __('Update Data') }}
             </h2>
         </x-slot>
-        <main class="text-gray-600">
+        <main class="text-gray-600 pb-10">
             @include('registration-form-update-for-user')
         </main>
         <script>
