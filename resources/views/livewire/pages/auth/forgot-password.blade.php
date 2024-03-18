@@ -37,7 +37,7 @@ new #[Layout('layouts.guest')] class extends Component {
     <!-- Session Status -->
 
     <section class="bg-gray-50 dark:bg-gray-900" style="background-image: url({{ asset('images/texture.png') }});">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 h-screen">
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class=" h-16 mr-2" src="{{ asset('images/logoAccel365polos.png') }}" alt="logo">
 
@@ -71,7 +71,9 @@ new #[Layout('layouts.guest')] class extends Component {
                         <button type="submit"
                             class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Email
                             Password Reset Link</button>
-
+                        <div class="text-center">
+                            <a href="/login" wire:navigate>Already Registered</a>
+                        </div>
                     </form>
                 </div>
             </div>

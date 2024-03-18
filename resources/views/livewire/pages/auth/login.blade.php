@@ -29,7 +29,7 @@ new #[Layout('layouts.guest')] class extends Component {
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <section class="bg-gray-50 dark:bg-gray-900" style="background-image: url({{ asset('images/texture.png') }});">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 h-screen">
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class=" h-16 mr-2" src="{{ asset('images/logoAccel365polos.png') }}" alt="logo">
 
