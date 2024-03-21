@@ -50,8 +50,7 @@
 
              {{-- Description --}}
              <div class="relative z-0 w-full mb-5 group" wire:ignore>
-                 <label for="floating_title" class="text-sm text-gray-500 dark:text-gray-400">Title
-                     {!! $description !!}</label>
+                 <label for="floating_title" class="text-sm text-gray-500 dark:text-gray-400">Description</label>
 
 
                  {{-- <textarea id="description" rows="4" wire:model.live="description"
