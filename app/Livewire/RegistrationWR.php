@@ -195,17 +195,6 @@ class RegistrationWR extends Component
         'name' => 'required',
         'title' => 'nullable',
         'email' => 'required|email',
-        'kode_agent' => 'nullable|numeric',
-        'description' => 'nullable',
-        'clients' => 'nullable',
-        'claims' => 'nullable',
-        'teams' => 'nullable',
-        'mobile' => 'nullable',
-        'whatsapp' => 'nullable',
-        'instagram' => 'nullable',
-        'facebook' => 'nullable',
-        'tiktok' => 'nullable',
-        'youtube' => 'nullable',
         'office' => 'nullable|max:25',
         'office_location' => 'nullable',
         'address_1' => 'nullable|max:30',
@@ -230,6 +219,7 @@ class RegistrationWR extends Component
         $this->is_add = 0;
         $this->is_edit = 0;
         $this->is_editPhoto = 0;
+        // $this->form_open = 1;
         $this->clear_form();
     }
 
@@ -239,20 +229,6 @@ class RegistrationWR extends Component
         $this->name = '';
         $this->title = '';
         $this->email = '';
-        $this->kode_agent = '';
-        $this->description = '';
-        $this->clients = '';
-        $this->claims = '';
-        $this->teams = '';
-
-
-        $this->mobile = '';
-        $this->whatsapp = '';
-        $this->instagram = '';
-        $this->facebook = '';
-        $this->tiktok = '';
-        $this->youtube = '';
-        $this->photo = '';
         $this->office_location = '';
     }
 

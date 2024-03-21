@@ -40,6 +40,34 @@
                 });
             });
         </script>
+        @push('scripts')
+            {{-- <script>
+                ClassicEditor.editorConfig = function(config) {
+                    config.removePlugins = 'uploadImage';
+                }
+            </script> --}}
+            {{-- referensi remove toolbar https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html --}}
+            <script>
+                ClassicEditor
+                    .create(document.querySelector('#description'), {
+                        toolbar: {
+                            items: [
+                                'undo', 'redo',
+                                '|', 'bold', 'italic', 'blockQuote',
+                            ],
+                            shouldNotGroupWhenFull: false
+                        }
+                    })
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            @this.set('description', editor.getData());
+                        })
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            </script>
+        @endpush
     </x-app-layout>
 
 
