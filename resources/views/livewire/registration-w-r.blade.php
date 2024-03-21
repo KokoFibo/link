@@ -8,18 +8,16 @@
                 {{ __('Registration') }}
             </h2>
         </x-slot>
-        <div class="text-gray-600">
+        <div class="text-gray-600" x-data="{ open: false }">
 
 
 
             {{-- Add Data --}}
-
             @if ($form_open)
                 @include('registration-form')
             @endif
 
             @if ($form_open == false)
-                {{-- table --}}
                 @include('registration-table')
             @endif
 

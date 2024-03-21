@@ -167,8 +167,8 @@
                 </div>
 
                 <!-- About me -->
-                <div class="m-4 text-gray-600">
-                    @foreach (split_text($data->description, '/pr') as $d)
+                <div class="m-4 text-gray-600 list-disc">
+                    {{-- @foreach (split_text($data->description, '/pr') as $d)
                         @if (str_contains($d, '/ln'))
                             @foreach (split_text($d, '/ln') as $p)
                                 <p>{{ $p }}</p>
@@ -178,7 +178,8 @@
                             <p>{{ $d }}</p>
                             <br>
                         @endif
-                    @endforeach
+                    @endforeach --}}
+                    {!! $data->description !!}
                 </div>
 
                 <!-- Profile -->
