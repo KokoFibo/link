@@ -1,15 +1,30 @@
 <div>
     {{-- <title>Registration</title> --}}
+    {{-- <x-navbar></x-navbar> --}}
     {{-- <livewire:NavbarMenu /> --}}
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
-                {{ __('Update Data') }}
+                {{ __('Registration') }}
             </h2>
         </x-slot>
-        <main class="text-gray-600 pb-10">
-            @include('registration-form-update-for-user')
-        </main>
+        <div class="text-gray-600">
+
+
+
+            {{-- Add Data --}}
+
+            @if ($form_open)
+                @include('registration-form')
+            @endif
+
+            @if ($form_open == false)
+                {{-- table --}}
+                @include('registration-table')
+            @endif
+
+        </div>
+        {{-- </x-app-layout> --}}
         <script>
             $(document).ready(function() {
                 toastr.options = {
@@ -40,28 +55,7 @@
                 });
             });
         </script>
-        <script>
-            $('#description').summernote({
-                placeholder: 'Hello Bootstrap 4',
-                tabsize: 2,
-                height: 100,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ],
-                callbacks: {
-                    onChange: function(contents, $editable) {
-                        @this.set('description', contents);
-                    }
-                }
-            });
-        </script>
-    </x-app-layout>
 
+    </x-app-layout>
 
 </div>
