@@ -10,6 +10,23 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function getCodeData($code)
+    {
+        $data = User::where('code', $code)->first();
+        if ($data != null) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Data Found',
+                'data' => $data
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Data Not Found'
+
+            ], 404);
+        }
+    }
 
     public function vcf($code)
     {
